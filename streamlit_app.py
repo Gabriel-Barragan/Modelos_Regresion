@@ -3,7 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
-st.header('Regresión lineal')
+st.title('Regresión lineal')
 st.markdown('*Autor: Gabriel Barragán*')
 
 st.write('# Cargar base de datos')
@@ -64,3 +64,12 @@ if st.button('Calcular regresión lineal'):
            plt.ylabel(y.name)
            # Display the plot in Streamlit
            st.pyplot(plt)
+
+# Predict a new value
+st.write('# Predicción de valores con el modelo de regresión lineal')
+st.write('X: ',X.name)
+input_value = st.number_input('Introduce un valor de X')
+
+if st.button('Predecir'):
+           predicted_value = model([[input_value]])
+           st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
