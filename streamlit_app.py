@@ -51,7 +51,9 @@ if st.checkbox('Calcular regresión lineal'):
 
            intercept = model.intercept_
            coefficient = model.coef_[0]
-           st.write(f'Modelo de regressión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
+           st.write('x: ',X.name)
+           st.write('y: ',y.name)
+           st.write(f'Modelo de regresión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
            correlation_coef = df[X.name].corr(df[y.name])
            st.write(f'Coeficiente de correlación: r = {correlation_coef:.2f}')
            
@@ -69,8 +71,8 @@ if st.checkbox('Calcular regresión lineal'):
 
            # Predict a new value
            st.write('# Predicción de valores con el modelo de regresión lineal')
-           st.write('X: ',X.name)
-           input_value = st.number_input('Introduce un valor de X', 0)
+           st.write('x: ',X.name)
+           input_value = st.number_input('Introduce un valor de x', 0)
 
            predicted_value = model.predict([[input_value]])
            st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
