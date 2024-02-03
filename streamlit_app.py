@@ -11,7 +11,14 @@ st.write('# Cargar base de datos')
 # Load Data
 # Create a list of datasets
 datasets = ["1.longitud_femur_estatura.csv",
-           "6.extension_hielo.csv"
+            "2.Demanda_bebidas_gaseosas.csv",
+            "3.Diametro_arbol.csv",
+            "4.Nivel_CO2.csv",
+            "5.Temperatura_grillos.csv",
+            "6.extension_hielo.csv",
+            "7.Prevalencia_mosquitos.csv",
+            "8.Ruido_inteligibilidad.csv",
+            "9.Esperanza_vida.csv"
            ]
 
 # Create a dropdown menu to select the dataset
