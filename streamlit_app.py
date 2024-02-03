@@ -70,6 +70,5 @@ if st.button('Calcular regresión lineal'):
            st.write('X: ',X.name)
            input_value = st.number_input('Introduce un valor de X', 10)
 
-           if st.button('Predecir'):
-                      predicted_value = model.predict([[input_value]])
-                      st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
+           predicted_value = model.predict([[input_value]])
+           st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
