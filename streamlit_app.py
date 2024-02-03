@@ -20,6 +20,12 @@ selected_dataset = st.selectbox("Seleccione una base de datos", datasets)
 # Read the selected dataset into a pandas Dataframe
 df = pd.read_csv('Datasets/'+selected_dataset)
 
+st.write('''Opciones:
+Mostrar base de datos
+Mostrar diagrama de dispersión
+Calcular regresión lineal
+''')
+
 # Display the Dataframe
 if st.checkbox('Mostrar base de datos'):
            st.write('Base de datos: '+selected_dataset)
@@ -68,7 +74,7 @@ if st.checkbox('Calcular regresión lineal'):
            # Predict a new value
            st.write('# Predicción de valores con el modelo de regresión lineal')
            st.write('X: ',X.name)
-           input_value = st.number_input('Introduce un valor de X', 10)
+           input_value = st.number_input('Introduce un valor de X', 0)
 
            predicted_value = model.predict([[input_value]])
            st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
