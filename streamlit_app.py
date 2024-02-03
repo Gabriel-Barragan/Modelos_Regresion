@@ -31,7 +31,7 @@ y = df.iloc[:,1]
 
 # Plot a scatterplot
 plt.subplots()
-plt.title('Histogram')
+plt.title('Diagrama de dispersión')
 plt.scatter(X,y)
 plt.xlabel(X.name)
 plt.ylabel(y.name)
