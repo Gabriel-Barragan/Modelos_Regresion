@@ -52,7 +52,7 @@ if st.checkbox('Calcular regresión lineal'):
            intercept = model.intercept_
            coefficient = model.coef_[0]
            st.write(f'Modelo de regressión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
-           st.write('Coeficiente de correlación: ',df.corr())
+           st.write('Coeficiente de correlación: ',df[X.name].corr(df[y.name]))
            
            # Plot the regression line
            x_vals = X.values.reshape(-1,1)
