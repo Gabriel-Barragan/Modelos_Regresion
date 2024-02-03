@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
 st.header('Regresión lineal')
@@ -28,6 +29,15 @@ if st.checkbox('Mostrar base de datos'):
 X = df.iloc[:,0]
 y = df.iloc[:,1]
 
+# Plot a scatterplot
+plt.subplots()
+plt.title('Histogram')
+plt.scatter(X,y)
+plt.xlabel(X.name)
+plt.ylabel(y.name)
+# Display the plot in Streamlit
+st.pyplot(plt)
+
 # Create a linear regression model
 model = LinearRegression()
 
@@ -37,3 +47,4 @@ model.fit(X.values.reshape(-1,1), y)
 intercept = model.intercept_
 coefficient = model.coef_[0]
 st.write(f'Modelo de regressión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
+
