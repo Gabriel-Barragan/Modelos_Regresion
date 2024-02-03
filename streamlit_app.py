@@ -2,7 +2,6 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-from streamlit_option_menu import option_menu
 
 st.title('Regresión lineal')
 st.markdown('*Autor: Gabriel Barragán*')
@@ -20,9 +19,6 @@ selected_dataset = st.selectbox("Seleccione una base de datos", datasets)
 
 # Read the selected dataset into a pandas Dataframe
 df = pd.read_csv('Datasets/'+selected_dataset)
-
-selected = option_menu(None, ["Mostrar base de datos", "Mostrar diagrama de dispersión", "Calcular regresión lineal"])
-selected
                        
 # Display the Dataframe
 if st.checkbox('Mostrar base de datos'):
