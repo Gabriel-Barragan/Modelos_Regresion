@@ -1,40 +1,39 @@
-import altair as alt
-import numpy as np
 import pandas as pd
 import streamlit as st
+from sklearn.linear_model import LinearRegression
 
-"""
-# Welcome to Streamlit!
+st.header('Regresión lineal')
+st.markdown('*Autor: Gabriel Barragán*')
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+st.header('Cargar base de datos')
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+# Load Data
+# Create a list of datasets
+datasets = ["1.longitud_femur_estatura.csv",
+           "6.extension_hielo.csv"
+           ]
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
+# Create a dropdown menu to select the dataset
+selected_dataset = st.selectbox("Seleccione una base de datos", datasets)
 
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
+# Read the selected dataset into a pandas Dataframe
+df = pd.read_csv('Datasets/'+selected_dataset)
 
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
+# Display the Dataframe
+if st.checkbox('Mostrar base de datos'):
+           st.write('Base de datos: '+selected_dataset)
+           st.dataframe(df)
 
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
+# Access X and y variables
+X = df.iloc[:,0]
+y = df.iloc[:,1]
 
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+# Create a linear regression model
+model = LinearRegression()
+
+# Fit the model to the data
+model.fit(X.values.reshape(-1,1), y)
+
+intercept = model.intercept_
+coefficient = model.coef_[0]
+st.write(f'Modelo de regressión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
