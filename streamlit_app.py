@@ -20,12 +20,9 @@ selected_dataset = st.selectbox("Seleccione una base de datos", datasets)
 # Read the selected dataset into a pandas Dataframe
 df = pd.read_csv('Datasets/'+selected_dataset)
 
-st.write('''Opciones:
-Mostrar base de datos
-Mostrar diagrama de dispersión
-Calcular regresión lineal
-''')
-
+selected = option_menu(None, ["Mostrar base de datos", 'Mostrar diagrama de dispersión', 'Calcular regresión lineal'])
+selected
+                       
 # Display the Dataframe
 if st.checkbox('Mostrar base de datos'):
            st.write('Base de datos: '+selected_dataset)
