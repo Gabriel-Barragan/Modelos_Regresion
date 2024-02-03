@@ -48,3 +48,13 @@ intercept = model.intercept_
 coefficient = model.coef_[0]
 st.write(f'Modelo de regressión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
 
+# Plot the regression line
+x_vals = X.values.reshape(-1,1)
+y_vals = model.predict(x_vals)
+plt.subplots()
+plt.title('Diagrama de dispersión y recta de regresión')
+plt.plot(x_vals, y_vals, color='red')
+plt.xlabel(X.name)
+plt.ylabel(y.name)
+# Display the plot in Streamlit
+st.pyplot(plt)
