@@ -115,6 +115,6 @@ else:
             
             if st.checkbox('Mostrar diagrama de dispersión'):
                         st.write('# Diagrama de dispersión')
-                        plt.subplots()
+                        fig_1 = plt.subplots()
                         sns.scatterplot(data=df, x="Anio", y="Tiempo", hue="Sexo")
-                        st.pyplot(plt)
+                        st.pyplot(fig_1)
