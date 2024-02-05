@@ -27,7 +27,12 @@ selected_dataset = st.selectbox("Seleccione una base de datos", datasets)
 
 # Read the selected dataset into a pandas Dataframe
 df = pd.read_csv('Datasets/'+selected_dataset)
-                       
+
+if selected_dataset != '11.Record_Olimpico.csv':
+            print('Datos no agrupados')
+else: 
+            print('Datos agrupados')
+
 # Display the Dataframe
 if st.checkbox('Mostrar base de datos'):
            st.write('Base de datos: '+selected_dataset)
