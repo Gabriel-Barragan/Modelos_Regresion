@@ -41,7 +41,7 @@ if selected_dataset != '11.Record_Olimpico.csv':
             if st.checkbox('Mostrar estadísticos descriptivos'):
                         st.write(df.describe())
                         
-                        correlation_coef = df[X.name].corr(df[y.name])
+                        correlation_coef = df[df.columns[0]].corr(df[df.columns[1]])
                         st.write(f'Coeficiente de correlación: r = {correlation_coef:.2f}')
             
             # Access X and y variables
@@ -115,6 +115,9 @@ else:
             if st.checkbox('Mostrar estadísticos descriptivos'):
                         st.write(df.groupby('Sexo')['Tiempo'].describe())
 
+                        correlation_coef = df['Anio'].corr(df['Tiempo'])
+                        st.write(f'Coeficiente de correlación: r = {correlation_coef:.2f}')
+                        
                         # Bar chart of number of athletes per country, grouped by sex
                         plt.subplots()
                         plt.title('Número de atletas por país agrupados por sexo')
