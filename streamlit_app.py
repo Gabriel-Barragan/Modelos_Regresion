@@ -117,7 +117,7 @@ else:
                         # Bar chart of number of athletes per country, grouped by sex
                         plt.subplots()
                         plt.title('Número de atletas por país agrupados por sexo')
-                        sns.histplot(data=df, y="Pais", hue="Sexo", stat="count", multiple="dodge")
+                        sns.histplot(data=df, y="Pais", hue="Sexo", stat="count", multiple="dodge", shrink=0.75)
                         st.pyplot(plt)
 
             
