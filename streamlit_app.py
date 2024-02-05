@@ -42,7 +42,7 @@ if selected_dataset != '11.Record_Olimpico.csv':
                         st.write(df.describe())
                         
                         correlation_coef = df[df.columns[0]].corr(df[df.columns[1]])
-                        st.write(f'Coeficiente de correlación entre la variable {df.columns[0]} y {df.columns[1]} es: r = {correlation_coef:.2f}')
+                        st.write(f'Coeficiente de correlación entre la variable {df.columns[0]} y {df.columns[1]}: R = {correlation_coef:.2f}')
             
             # Access X and y variables
             X = df.iloc[:,0]
@@ -117,7 +117,7 @@ else:
                         st.write(grouped_data['Tiempo'].describe())
 
                         for name, group in grouped_data:
-                                    st.write(f"Coeficiente de correlación ({name}): {group['Anio'].corr(group['Tiempo']):.2f}")
+                                    st.write(f"Coeficiente de correlación ({name}): R = {group['Anio'].corr(group['Tiempo']):.2f}")
                         
                         # Bar chart of number of athletes per country, grouped by sex
                         plt.subplots()
