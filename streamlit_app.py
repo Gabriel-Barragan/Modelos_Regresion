@@ -77,12 +77,12 @@ if st.checkbox('Calcular regresión lineal'):
            # Display the plot in Streamlit
            st.pyplot(plt)
             
-           x_min = 0
-           x_max = 100
+           x_min = st.number_input('Valor mínimo x:',0)
+           x_max = st.number_input('Valor máximo x:',100)
            x_range_prediction = np.arange(x_min,x_max,1)
            y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
            plt.subplots()
-           plt.title('Diagrama de dispersión y recta de regresión amplio')
+           plt.title('Diagrama de dispersión y recta de regresión')
            plt.scatter(X, y)
            plt.plot(x_range_prediction, y_range_prediction, color='red')
            plt.xlabel(X.name)
