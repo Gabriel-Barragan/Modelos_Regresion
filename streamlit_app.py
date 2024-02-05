@@ -141,6 +141,7 @@ else:
                                     models[name] = model
                                     plt.scatter(group['Anio'], group['Tiempo'], label=name)
                                     x_vals = np.linspace(group['Anio'].min(), group['Anio'].max())
-                                    y_vals = model[name].predict(x_vals.reshape(-1,1))
+                                    y_vals = models[name].predict(x_vals.reshape(-1,1))
                                     plt.plot(x_vals, y_vals, label=f"Recta regresión: {name}")
+
                         st.pyplot(plt)
