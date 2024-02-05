@@ -37,6 +37,9 @@ if selected_dataset != '11.Record_Olimpico.csv':
                        st.write('Base de datos: '+selected_dataset)
                        st.dataframe(df)
 
+            if st.checkbox('Mostrar estadísticos descriptivos'):
+                        st.write(df.describe())
+            
             # Access X and y variables
             X = df.iloc[:,0]
             y = df.iloc[:,1]
@@ -101,6 +104,9 @@ if selected_dataset != '11.Record_Olimpico.csv':
                        predicted_value = model.predict([[input_value]])
                        st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
 else: 
-            st.write('Datos agrupados')
+            st.write('# Datos agrupados')
+            if st.checkbox('Mostrar estadísticos descriptivos'):
+                        st.write(df.describe())
+            
 
 
