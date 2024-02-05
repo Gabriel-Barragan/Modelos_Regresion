@@ -105,8 +105,16 @@ if selected_dataset != '11.Record_Olimpico.csv':
                        st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
 else: 
             st.write('# Datos agrupados')
-            if st.checkbox('Mostrar estadísticos descriptivos'):
-                        st.write(df['Tiempo'].describe())
+            # Display the Dataframe
+            if st.checkbox('Mostrar base de datos'):
+                       st.write('Base de datos: '+selected_dataset)
+                       st.dataframe(df)
             
-
-
+            if st.checkbox('Mostrar estadísticos descriptivos'):
+                        st.write(df.groupby('Sexo')['Tiempo'].describe())
+            
+            if st.checkbox('Mostrar diagrama de dispersión'):
+                        st.write('# Diagrama de dispersión')
+                        plt.subplots()
+                        sns.scatterplot(data=df, x="Anio", y="Tiempo", hue="Sexo")
+                        st.pyplot(plt)
