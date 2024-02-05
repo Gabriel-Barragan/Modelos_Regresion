@@ -142,7 +142,7 @@ else:
                                     models[name] = model
                                     st.write(f"Modelo de regresión lineal ({name}): y= {model.coef_[0]:.4f}x + {model.intercept_:.4f}")
                                     plt.scatter(group['Anio'], group['Tiempo'], label=name)
-                                    x_vals = np.linspace(group['Anio'].min(), (1.02)*group['Anio'].max())
+                                    x_vals = np.linspace(group['Anio'].min(), (1.025)*group['Anio'].max())
                                     y_vals = models[name].predict(x_vals.reshape(-1,1))
                                     plt.plot(x_vals, y_vals, label=f"Recta regresión: {name}")
             
