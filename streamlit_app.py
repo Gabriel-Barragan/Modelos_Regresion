@@ -134,7 +134,7 @@ else:
                         grouped_data = df.groupby('Sexo')
                         models = {}
 
-                        #plt.subplots()
+                        plt.subplots()
                         for name, group in grouped_data:
                                     model = LinearRegression()
                                     model.fit(group['Anio'].values.reshape(-1,1), group['Tiempo'])
