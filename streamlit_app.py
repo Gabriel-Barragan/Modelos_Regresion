@@ -113,6 +113,13 @@ else:
             
             if st.checkbox('Mostrar estadísticos descriptivos'):
                         st.write(df.groupby('Sexo')['Tiempo'].describe())
+
+                        # Bar chart of number of athletes per country, grouped by sex
+                        plt.subplots()
+                        plt.title('Número de atletas por país agrupados por sexo')
+                        sns.histplot(data=df, y="Pais", hue="Sexo", stat="count", multiple="dodge")
+                        st.pyplot(plt)
+
             
             if st.checkbox('Mostrar diagrama de dispersión'):
                         st.write('# Diagrama de dispersión')
