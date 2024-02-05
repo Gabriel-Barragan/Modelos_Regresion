@@ -93,7 +93,7 @@ if st.checkbox('Calcular regresión lineal'):
            # Predict a new value
            st.write('# Predicción de valores con el modelo de regresión lineal')
            st.write('x: ',X.name)
-           input_value = st.number_input('Introduce un valor de x', 0)
+           input_value = st.number_input('Introduce un valor de x', value=X.min())
 
            predicted_value = model.predict([[input_value]])
            st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
