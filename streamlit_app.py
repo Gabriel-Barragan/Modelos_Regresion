@@ -115,11 +115,6 @@ else:
             if st.checkbox('Mostrar estadísticos descriptivos'):
                         st.write(df.groupby('Sexo')['Tiempo'].describe())
 
-                        grouped_data = df.groupby('Sexo')
-                        for name, group in grouped_data:
-                                    correlation = group[df.columns[0]].corr(group[df.columns[1]])
-                                    st.write(f"Coefieciente de correlación {name}: {correlation}")
-
                         #correlation_coef = df['Anio'].corr(df['Tiempo'])
                         #st.write(f'Coeficiente de correlación: r = {correlation_coef:.2f}')
                         
@@ -140,7 +135,7 @@ else:
             # Create a linear regression model
             if st.checkbox('Calcular regresión lineal'):
                         st.write('# Modelo de regresión lineal')
-                        
+                        grouped_data = df.groupby('Sexo')
                         models = {}
                         
                         plt.subplots()
