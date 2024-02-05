@@ -82,7 +82,7 @@ if st.checkbox('Calcular regresión lineal'):
             x_range_prediction = np.arrange(x_min,x_max,1)
             y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
             plt.subplots()
-            plt.title('Diagrama de dispersión y recta de regresión')
+            plt.title('Diagrama de dispersión y recta de regresión amplio')
             plt.scatter(X, y)
             plt.plot(x_range_prediction, y_range_prediction, color='red')
             plt.xlabel(X.name)
