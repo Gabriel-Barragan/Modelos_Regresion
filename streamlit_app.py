@@ -127,3 +127,20 @@ else:
                         plt.title('Diagrama de dispersión')
                         sns.scatterplot(data=df, x="Anio", y="Tiempo", hue="Sexo")
                         st.pyplot(plt)
+
+            # Create a linear regression model
+            if st.checkbox('Calcular regresión lineal'):
+                        st.write('# Modelo de regresión lineal')
+                        grouped_data = df.groupby('Sexo')
+                        models = {}
+
+                        #plt.subplots()
+                        for name, group in grouped_data:
+                                    model = LinearRegression()
+                                    model.fit(group['Anio'].values.reshape(-1,1), group['Tiempo'])
+                                    models[name] = model
+                                    plt.scatter(group['Anio'], group['Tiempo'], label=name)
+                                    x_vals = np.linspace(group['Anio'].min(), group['Anio'].max())
+                                    y_vals = model[name].predict(x_vals.reshape(-1,1))
+                                    plt.plot(x_vals, y_vals, label=f"Recta regresión: {name}")
+                        st.pyplot(plt)
