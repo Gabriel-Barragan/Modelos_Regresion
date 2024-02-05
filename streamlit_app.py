@@ -140,7 +140,7 @@ else:
                                     model = LinearRegression()
                                     model.fit(group['Anio'].values.reshape(-1,1), group['Tiempo'])
                                     models[name] = model
-                                    print(f"Modelo de regresión lineal ({name}): y= {model.coef_[0]:.4f}x + {model.intercept_:.4f}")
+                                    st.write(f"Modelo de regresión lineal ({name}): y= {model.coef_[0]:.4f}x + {model.intercept_:.4f}")
                                     plt.scatter(group['Anio'], group['Tiempo'], label=name)
                                     x_vals = np.linspace(group['Anio'].min(), group['Anio'].max())
                                     y_vals = models[name].predict(x_vals.reshape(-1,1))
