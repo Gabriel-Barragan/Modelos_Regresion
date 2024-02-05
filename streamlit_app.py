@@ -134,7 +134,7 @@ else:
                         st.write('# Modelo de regresión lineal')
                         grouped_data = df.groupby('Sexo')
                         models = {}
-
+                        
                         plt.subplots()
                         for name, group in grouped_data:
                                     model = LinearRegression()
@@ -145,5 +145,9 @@ else:
                                     x_vals = np.linspace(group['Anio'].min(), group['Anio'].max())
                                     y_vals = models[name].predict(x_vals.reshape(-1,1))
                                     plt.plot(x_vals, y_vals, label=f"Recta regresión: {name}")
-
+            
+                        plt.xlabel("Anio")
+                        plt.ylabel("Tiempo")
+                        plt.title("Diagrama de dispersión y recta de regresión por grupos")
+                        plt.legend()
                         st.pyplot(plt)
