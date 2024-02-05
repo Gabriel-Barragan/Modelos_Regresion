@@ -106,7 +106,7 @@ if selected_dataset != '11.Record_Olimpico.csv':
 else: 
             st.write('# Datos agrupados')
             if st.checkbox('Mostrar estadísticos descriptivos'):
-                        st.write(df.describe())
+                        st.write(df['Tiempo'].describe())
             
 
 
