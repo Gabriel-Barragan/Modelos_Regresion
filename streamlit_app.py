@@ -120,8 +120,8 @@ else:
                                     correlation = group[df.columns[0]].corr(group[df.columns[1]])
                                     st.write(f"Coefieciente de correlación {name}: {correlation}")
 
-                        correlation_coef = df['Anio'].corr(df['Tiempo'])
-                        st.write(f'Coeficiente de correlación: r = {correlation_coef:.2f}')
+                        #correlation_coef = df['Anio'].corr(df['Tiempo'])
+                        #st.write(f'Coeficiente de correlación: r = {correlation_coef:.2f}')
                         
                         # Bar chart of number of athletes per country, grouped by sex
                         plt.subplots()
