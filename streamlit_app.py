@@ -51,7 +51,7 @@ if st.checkbox('Mostrar diagrama de dispersión'):
 
 # Create a linear regression model
 if st.checkbox('Calcular regresión lineal'):
-           st.write('# Diagrama de dispersión')
+           st.write('# Modelo de regresión lineal')
            model = LinearRegression()
 
            # Fit the model to the data
