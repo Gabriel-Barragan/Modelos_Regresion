@@ -77,8 +77,8 @@ if st.checkbox('Calcular regresión lineal'):
            # Display the plot in Streamlit
            #st.pyplot(plt)
             
-           x_min = st.number_input('Valor mínimo x:',X.min())
-           x_max = st.number_input('Valor máximo x:',X.max())
+           x_min = st.number_input('Valor mínimo x:',value=X.min())
+           x_max = st.number_input('Valor máximo x:',value=X.max())
            x_range_prediction = np.arange(x_min,x_max,1)
            y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
            plt.subplots()
