@@ -116,8 +116,8 @@ else:
             if st.checkbox('Mostrar estadísticos descriptivos'):
                         st.write(grouped_data['Tiempo'].describe())
 
-                        for name, group in data_grouped:
-                                    print(f"Coeficiente de correlación ({name}): {group['Anio'].corr(group['Tiempo']):.2f}")
+                        for name, group in grouped_data:
+                                    st.write(f"Coeficiente de correlación ({name}): {group['Anio'].corr(group['Tiempo']):.2f}")
                         
                         # Bar chart of number of athletes per country, grouped by sex
                         plt.subplots()
