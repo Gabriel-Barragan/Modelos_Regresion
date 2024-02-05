@@ -79,7 +79,7 @@ if st.checkbox('Calcular regresión lineal'):
             
            x_min = st.number_input('Valor mínimo x:',value=X.min())
            x_max = st.number_input('Valor máximo x:',value=X.max())
-           x_range_prediction = np.arange((0.5)*x_min,(1.5)*x_max,1)
+           x_range_prediction = np.arange((0.90)*x_min,(1.10)*x_max,1)
            y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
            plt.subplots()
            plt.title('Diagrama de dispersión y recta de regresión')
