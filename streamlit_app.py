@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
@@ -75,6 +76,19 @@ if st.checkbox('Calcular regresión lineal'):
            plt.ylabel(y.name)
            # Display the plot in Streamlit
            st.pyplot(plt)
+
+            x_min = 0
+            x_max = 100
+            x_range_prediction = np.arrange(x_min,x_max,1)
+            y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
+            plt.subplots()
+            plt.title('Diagrama de dispersión y recta de regresión')
+            plt.scatter(X, y)
+            plt.plot(x_range_prediction, y_range_prediction, color='red')
+            plt.xlabel(X.name)
+            plt.ylabel(y.name)
+            # Display the plot in Streamlit
+            st.pyplot(plt)
 
            # Predict a new value
            st.write('# Predicción de valores con el modelo de regresión lineal')
