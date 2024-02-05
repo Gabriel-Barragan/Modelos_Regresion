@@ -40,6 +40,9 @@ if selected_dataset != '11.Record_Olimpico.csv':
 
             if st.checkbox('Mostrar estadísticos descriptivos'):
                         st.write(df.describe())
+                        
+                        correlation_coef = df[X.name].corr(df[y.name])
+                        st.write(f'Coeficiente de correlación: r = {correlation_coef:.2f}')
             
             # Access X and y variables
             X = df.iloc[:,0]
@@ -69,9 +72,7 @@ if selected_dataset != '11.Record_Olimpico.csv':
                        st.write('x: ',X.name)
                        st.write('y: ',y.name)
                        st.write(f'Modelo de regresión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
-                       correlation_coef = df[X.name].corr(df[y.name])
-                       st.write(f'Coeficiente de correlación: r = {correlation_coef:.2f}')
-           
+                                  
                        # Plot the regression line
                        #x_vals = X.values.reshape(-1,1)
                        #y_vals = model.predict(x_vals)
@@ -139,6 +140,7 @@ else:
                                     model = LinearRegression()
                                     model.fit(group['Anio'].values.reshape(-1,1), group['Tiempo'])
                                     models[name] = model
+                                    print(f"Modelo de regresión lineal ({name}): y= {model.coef_[0]:.4f}x + {model.intercept_:.4f}")
                                     plt.scatter(group['Anio'], group['Tiempo'], label=name)
                                     x_vals = np.linspace(group['Anio'].min(), group['Anio'].max())
                                     y_vals = models[name].predict(x_vals.reshape(-1,1))
