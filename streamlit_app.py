@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.linear_model import LinearRegression
 
 st.title('Regresión lineal')
@@ -115,6 +116,7 @@ else:
             
             if st.checkbox('Mostrar diagrama de dispersión'):
                         st.write('# Diagrama de dispersión')
-                        fig_1 = plt.subplots()
+                        plt.subplots()
+                        plt.title('Diagrama de dispersión')
                         sns.scatterplot(data=df, x="Anio", y="Tiempo", hue="Sexo")
-                        st.pyplot(fig_1)
+                        st.pyplot(plt)
