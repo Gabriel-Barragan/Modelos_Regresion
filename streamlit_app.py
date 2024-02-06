@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
+import scipy.stats as stats
 from sklearn.linear_model import LinearRegression
 
 st.title('Regresión lineal')
