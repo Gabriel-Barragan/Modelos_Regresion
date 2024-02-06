@@ -73,50 +73,50 @@ with tabs[0]:
       #          st.pyplot(plt) 
             
       # Plot a scatterplot
-     if st.checkbox('Mostrar diagrama de dispersión'):
-       st.write('# Diagrama de dispersión')
-       plt.subplots()
-       plt.title('Diagrama de dispersión')
-       plt.scatter(X,y)
-       plt.xlabel(X.name)
-       plt.ylabel(y.name)
-       # Display the plot in Streamlit
-       st.pyplot(plt)
+    if st.checkbox('Mostrar diagrama de dispersión'):
+      st.write('# Diagrama de dispersión')
+      plt.subplots()
+      plt.title('Diagrama de dispersión')
+      plt.scatter(X,y)
+      plt.xlabel(X.name)
+      plt.ylabel(y.name)
+      # Display the plot in Streamlit
+      st.pyplot(plt)
 
       # Create a linear regression model
-      if st.checkbox('Calcular regresión lineal'):
-        st.write('# Modelo de regresión lineal')
-        model = LinearRegression()
+    if st.checkbox('Calcular regresión lineal'):
+      st.write('# Modelo de regresión lineal')
+      model = LinearRegression()
 
-        # Fit the model to the data
-        model.fit(X.values.reshape(-1,1), y)
-        intercept = model.intercept_
-        coefficient = model.coef_[0]
-        st.write('x: ',X.name)
-        st.write('y: ',y.name)
-        st.write(f'Modelo de regresión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
+      # Fit the model to the data
+      model.fit(X.values.reshape(-1,1), y)
+      intercept = model.intercept_
+      coefficient = model.coef_[0]
+      st.write('x: ',X.name)
+      st.write('y: ',y.name)
+      st.write(f'Modelo de regresión lineal: y = {coefficient:.4f}x + {intercept:.4f}')
                                   
-        x_min = st.number_input('Valor mínimo x:',value=X.min())
-        x_max = st.number_input('Valor máximo x:',value=X.max()) 
-        x_range_prediction = np.arange((0.99)*x_min,(1.01)*x_max,1)
-        y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
+      x_min = st.number_input('Valor mínimo x:',value=X.min())
+      x_max = st.number_input('Valor máximo x:',value=X.max()) 
+      x_range_prediction = np.arange((0.99)*x_min,(1.01)*x_max,1)
+      y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
          
-        plt.subplots()
-        plt.title('Diagrama de dispersión y recta de regresión')
-        plt.scatter(X, y)
-        plt.plot(x_range_prediction, y_range_prediction, color='red')
-        plt.xlabel(X.name)
-        plt.ylabel(y.name)
-        # Display the plot in Streamlit
-        st.pyplot(plt)
+      plt.subplots()
+      plt.title('Diagrama de dispersión y recta de regresión')
+      plt.scatter(X, y)
+      plt.plot(x_range_prediction, y_range_prediction, color='red')
+      plt.xlabel(X.name)
+      plt.ylabel(y.name)
+      # Display the plot in Streamlit
+      st.pyplot(plt)
 
-         # Predict a new value
-        st.write('# Predicción de valores con el modelo de regresión lineal')
-        st.write('x: ',X.name)
-        input_value = st.number_input('Introduce un valor de x', value=X.min())
+      # Predict a new value
+      st.write('# Predicción de valores con el modelo de regresión lineal')
+      st.write('x: ',X.name)
+      input_value = st.number_input('Introduce un valor de x', value=X.min())
 
-        predicted_value = model.predict([[input_value]])
-        st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
+      predicted_value = model.predict([[input_value]])
+      st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
   
   else: 
     st.write('# Datos agrupados')
