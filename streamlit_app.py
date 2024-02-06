@@ -73,15 +73,15 @@ with tabs[0]:
       #          st.pyplot(plt) 
             
       # Plot a scatterplot
-      if st.checkbox('Mostrar diagrama de dispersión'):
-        st.write('# Diagrama de dispersión')
-        plt.subplots()
-        plt.title('Diagrama de dispersión')
-        plt.scatter(X,y)
-        plt.xlabel(X.name)
-        plt.ylabel(y.name)
-        # Display the plot in Streamlit
-        st.pyplot(plt)
+     if st.checkbox('Mostrar diagrama de dispersión'):
+       st.write('# Diagrama de dispersión')
+       plt.subplots()
+       plt.title('Diagrama de dispersión')
+       plt.scatter(X,y)
+       plt.xlabel(X.name)
+       plt.ylabel(y.name)
+       # Display the plot in Streamlit
+       st.pyplot(plt)
 
       # Create a linear regression model
       if st.checkbox('Calcular regresión lineal'):
