@@ -48,6 +48,12 @@ if selected_dataset != '11.Record_Olimpico.csv':
             X = df.iloc[:,0]
             y = df.iloc[:,1]
 
+            if st.checkbox('Visualización de variable de respuesta'):
+                       st.write(f'Histograma de {y.name}') 
+                       plt.subplots()
+                       plt.hist(x=y, edgecolor='black') 
+                       st.pyplot(plt)
+            
             # Plot a scatterplot
             if st.checkbox('Mostrar diagrama de dispersión'):
                        st.write('# Diagrama de dispersión')
