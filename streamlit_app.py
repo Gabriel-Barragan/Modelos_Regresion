@@ -49,25 +49,25 @@ if selected_dataset != '11.Record_Olimpico.csv':
             X = df.iloc[:,0]
             y = df.iloc[:,1]
 
-            if st.checkbox('Visualización de variable de respuesta'):
-                       st.write(f'# Visualización de {y.name}') 
-                       input_bins = st.slider('Ingrese número de bins', 1, 20, 5)
-                       plt.subplots()
-                       plt.title(f'Histograma de {y.name}') 
-                       plt.hist(x=y, bins=input_bins, edgecolor='black') 
-                       plt.xlabel('Valor')
-                       plt.ylabel('Frecuencia')
-                       st.pyplot(plt)
+            #if st.checkbox('Visualización de variable de respuesta'):
+            #           st.write(f'# Visualización de {y.name}') 
+            #           input_bins = st.slider('Ingrese número de bins', 1, 20, 5)
+            #           plt.subplots()
+            #           plt.title(f'Histograma de {y.name}') 
+            #           plt.hist(x=y, bins=input_bins, edgecolor='black') 
+            #          plt.xlabel('Valor')
+            #           plt.ylabel('Frecuencia')
+            #          st.pyplot(plt)
 
-                       plt.subplots()
-                       plt.title(f'Boxplot de {y.name}')
-                       plt.boxplot(y) 
-                       st.pyplot(plt)
+            #          plt.subplots()
+            #          plt.title(f'Boxplot de {y.name}')
+            #          plt.boxplot(y) 
+            #          st.pyplot(plt)
                         
-                       plt.subplots()
-                       #plt.title(f'Q-Q plot de  {y.name}')
-                       stats.probplot(y, dist='norm', plot=plt) 
-                       st.pyplot(plt) 
+            #          plt.subplots()
+            #          #plt.title(f'Q-Q plot de  {y.name}')
+            #          stats.probplot(y, dist='norm', plot=plt) 
+            #          st.pyplot(plt) 
             
             # Plot a scatterplot
             if st.checkbox('Mostrar diagrama de dispersión'):
