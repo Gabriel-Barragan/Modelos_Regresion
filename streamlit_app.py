@@ -61,7 +61,7 @@ if selected_dataset != '11.Record_Olimpico.csv':
 
                        plt.subplots()
                        plt.title(f'Boxplot de {y.name}')
-                       plt. boxplot(y) 
+                       plt.boxplot(y) 
                        st.pyplot(plt)
                         
                        plt.subplots()
