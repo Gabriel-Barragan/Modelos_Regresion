@@ -178,12 +178,8 @@ with tabs[1]:
   # Read the selected dataset into a pandas Dataframe
   df_2 = pd.read_csv('Datasets/'+selected_dataset_2)
   
-  if st.checkbox('Mostrar base de datos (primeros valores)', value=True):
-    st.write('Base de datos: '+selected_dataset_1)
-    st.dataframe(df_2.head())
-
-  if st.checkbox('Seleccionar variables', value=True):
+  if st.checkbox('Seleccionar variables y mostrar primeros valores', value=True):
     columns = df_2.columns.tolist()
     selected_columns = st.multiselect('Seleccionar variables', columns)
     filtered_data = df_2[selected_columns]
-    st.dataframe(filtered_data)
+    st.dataframe(filtered_data.head())
