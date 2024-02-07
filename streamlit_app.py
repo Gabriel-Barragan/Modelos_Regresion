@@ -97,7 +97,7 @@ with tabs[0]:
                                   
       x_min = st.number_input('Valor mínimo x:',value=X.min())
       x_max = st.number_input('Valor máximo x:',value=X.max()) 
-      x_range_prediction = np.arange((0.95)*x_min,(1.05)*x_max,1)
+      x_range_prediction = np.arange(x_min, x_max,1)
       y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
          
       plt.subplots()
