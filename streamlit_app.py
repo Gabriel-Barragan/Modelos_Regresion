@@ -178,6 +178,6 @@ with tabs[1]:
   # Read the selected dataset into a pandas Dataframe
   df_2 = pd.read_csv('Datasets/'+selected_dataset_2)
   
-  if st.checkbox('Mostrar base de datos'):
+  if st.checkbox('Mostrar base de datos', value=True):
     st.write('Base de datos: '+selected_dataset_1)
     st.dataframe(df_2)
