@@ -177,8 +177,8 @@ with tabs[1]:
   selected_dataset_2 = st.selectbox("Seleccione una base de datos", datasets_2)
 
   # Read the selected dataset into a pandas Dataframe
-  df = pd.read_csv('Datasets/'+selected_dataset_2)
+  df_2 = pd.read_csv('Datasets/'+selected_dataset_2)
   
   if st.checkbox('Mostrar base de datos'):
-    st.write('Base de datos: '+selected_dataset_2)
-    st.dataframe(df)
+    st.write('Base de datos: '+selected_dataset_1)
+    st.dataframe(df_2)
