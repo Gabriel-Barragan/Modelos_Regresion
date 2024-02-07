@@ -178,5 +178,5 @@ with tabs[1]:
   # Read the selected dataset into a pandas Dataframe
   df = pd.read_csv('Datasets/'+selected_dataset_2)
 
-  if st.checkbox('Mostrar base de datos'):
-    st.dataframe(df)
+  #if st.checkbox('Mostrar base de datos'):
+  #  st.dataframe(df)
