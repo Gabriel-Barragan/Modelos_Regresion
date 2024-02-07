@@ -48,7 +48,7 @@ with tabs[0]:
 
     if st.checkbox('Mostrar estadísticos descriptivos'):
       st.write(df.describe())
-      correlation_coef = df[df.columns[0]].corr(df[df.columns[1]])
+      correlation_coef = X.corr(y)
       st.write(f'Coeficiente de correlación entre la variable {df.columns[0]} y {df.columns[1]}: R = {correlation_coef:.2f}')
 
       #if st.checkbox('Visualización de variable de respuesta'):
@@ -207,3 +207,11 @@ with tabs[1]:
   selected_columns = st.multiselect('Seleccionar variables', columns)
   filtered_data = df_2[selected_columns]
   st.dataframe(filtered_data.head())
+
+  X = filtered_data.iloc[:,0]
+  y = filtered_data.iloc[:,1]
+
+  if checkbox('Mostrar estadísticos descriptivos',value=True):
+    st.write(filtered_data.describe())
+    correlation_coef = X.corr(y)
+    st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
