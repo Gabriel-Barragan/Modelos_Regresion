@@ -189,8 +189,8 @@ with tabs[1]:
   # Read the selected dataset into a pandas Dataframe
   df_2 = pd.read_csv('Datasets/'+selected_dataset_2+'.csv')
   
-  if st.checkbox('Seleccionar variables y mostrar primeros valores', value=True):
-    columns = df_2.columns.tolist()
-    selected_columns = st.multiselect('Seleccionar variables', columns)
-    filtered_data = df_2[selected_columns]
-    st.dataframe(filtered_data.head())
+  st.write('# Seleccionar variables y mostrar primeros valores')
+  columns = df_2.columns.tolist()
+  selected_columns = st.multiselect('Seleccionar variables', columns)
+  filtered_data = df_2[selected_columns]
+  st.dataframe(filtered_data.head())
