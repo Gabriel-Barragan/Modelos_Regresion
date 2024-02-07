@@ -168,8 +168,7 @@ with tabs[0]:
 with tabs[1]:
   # Load Data
   # Create a list of datasets
-  datasets_2 = ["Poblacion_Estados_Unidos.csv"
-              ]
+  datasets_2 = ["Poblacion_Estados_Unidos.csv"]
 
   st.write('# Cargar base de datos')
   
