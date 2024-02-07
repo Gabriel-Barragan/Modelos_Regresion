@@ -75,7 +75,7 @@ with tabs[0]:
       # Plot a scatterplot
     if st.checkbox('Mostrar diagrama de dispersión'):
       st.write('# Diagrama de dispersión')
-      #plt.subplots()
+      plt.subplots()
       plt.title('Diagrama de dispersión')
       plt.scatter(X,y)
       plt.xlabel(X.name)
@@ -101,7 +101,7 @@ with tabs[0]:
       x_range_prediction = np.arange((0.99)*x_min,(1.01)*x_max,1)
       y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
          
-      #plt.subplots()
+      plt.subplots()
       plt.title('Diagrama de dispersión y recta de regresión')
       plt.scatter(X, y)
       plt.plot(x_range_prediction, y_range_prediction, color='red')
@@ -133,14 +133,14 @@ with tabs[0]:
         st.write(f"Coeficiente de correlación ({name}): R = {group['Anio'].corr(group['Tiempo']):.2f}")
                         
         # Bar chart of number of athletes per country, grouped by sex
-      #plt.subplots()
+      plt.subplots()
       plt.title('Número de atletas por país agrupados por sexo')
       sns.histplot(data=df, y="Pais", hue="Sexo", stat="count", multiple="dodge", shrink=0.75)
       st.pyplot(plt)
       
       if st.checkbox('Mostrar diagrama de dispersión'):
         st.write('# Diagrama de dispersión')
-        #plt.subplots()
+        plt.subplots()
         plt.title('Diagrama de dispersión')
         sns.scatterplot(data=df, x="Anio", y="Tiempo", hue="Sexo")
         st.pyplot(plt)
@@ -149,7 +149,7 @@ with tabs[0]:
       if st.checkbox('Calcular regresión lineal'):
         st.write('# Modelo de regresión lineal')
         models = {}
-        #plt.subplots()
+        plt.subplots()
         for name, group in grouped_data:
           model = LinearRegression()
           model.fit(group['Anio'].values.reshape(-1,1), group['Tiempo'])
