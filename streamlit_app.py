@@ -184,6 +184,6 @@ with tabs[1]:
 
   if st.checkbox('Seleccionar variables', value=True):
     columns = df_2.columns.tolist()
-    selected_columns = st.selectmultiple('Seleccionar variables', columns)
+    selected_columns = st.multiselect('Seleccionar variables', columns)
     filtered_data = df_2[selected_columns]
     st.dataframe(filtered_data)
