@@ -17,23 +17,23 @@ with tabs[0]:
 
   # Load Data
   # Create a list of datasets
-  datasets_1 = ["1.longitud_femur_estatura.csv",
-              "2.Demanda_bebidas_gaseosas.csv",
-              "3.Diametro_arbol.csv",
-              "4.Nivel_CO2.csv",
-              "5.Temperatura_grillos.csv",
-              "6.extension_hielo.csv",
-              "7.Prevalencia_mosquitos.csv",
-              "8.Ruido_inteligibilidad.csv",
-              "9.Esperanza_vida.csv",
-              "11.Record_Olimpico.csv"
+  datasets_1 = ["1.longitud_femur_estatura",
+              "2.Demanda_bebidas_gaseosas",
+              "3.Diametro_arbol",
+              "4.Nivel_CO2",
+              "5.Temperatura_grillos",
+              "6.extension_hielo",
+              "7.Prevalencia_mosquitos",
+              "8.Ruido_inteligibilidad",
+              "9.Esperanza_vida",
+              "11.Record_Olimpico"
               ]
 
   # Create a dropdown menu to select the dataset
   selected_dataset_1 = st.selectbox("Seleccione una base de datos", datasets_1)
 
   # Read the selected dataset into a pandas Dataframe
-  df = pd.read_csv('Datasets/'+selected_dataset_1)
+  df = pd.read_csv('Datasets/'+selected_dataset_1+'.csv')
 
   if selected_dataset_1 != '11.Record_Olimpico.csv':
     # Access X and y variables
@@ -168,7 +168,18 @@ with tabs[0]:
 with tabs[1]:
   # Load Data
   # Create a list of datasets
-  datasets_2 = ["Poblacion_Estados_Unidos.csv"]
+  datasets_2 = ["Poblacion_Estados_Unidos",
+               "crecimiento_logistico",
+               "emisiones_escapes_autos",
+               "Especie_area",
+               "Experimentos_curva_olvido",
+               "Gastos_salud",
+               "Ley_Beer_Lambert",
+               "modelo_exponencial_o_potencia_1",
+               "modelo_exponencial_o_potencia_2",
+               "modelo_logaritmico",
+               "Pelota_caida",
+               "Vida_media"]
 
   st.write('# Cargar base de datos')
   
@@ -176,7 +187,7 @@ with tabs[1]:
   selected_dataset_2 = st.selectbox("Seleccione una base de datos", datasets_2)
 
   # Read the selected dataset into a pandas Dataframe
-  df_2 = pd.read_csv('Datasets/'+selected_dataset_2)
+  df_2 = pd.read_csv('Datasets/'+selected_dataset_2+'.csv')
   
   if st.checkbox('Seleccionar variables y mostrar primeros valores', value=True):
     columns = df_2.columns.tolist()
