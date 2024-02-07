@@ -36,6 +36,9 @@ with tabs[0]:
   df = pd.read_csv('Datasets/'+selected_dataset_1)
 
   if selected_dataset_1 != '11.Record_Olimpico.csv':
+    # Access X and y variables
+    X = df.iloc[:,0]
+    y = df.iloc[:,1]
     st.write('# Datos no agrupados')
 
     # Display the Dataframe
@@ -47,10 +50,6 @@ with tabs[0]:
       st.write(df.describe())
       correlation_coef = df[df.columns[0]].corr(df[df.columns[1]])
       st.write(f'Coeficiente de correlación entre la variable {df.columns[0]} y {df.columns[1]}: R = {correlation_coef:.2f}')
-      
-      # Access X and y variables
-      X = df.iloc[:,0]
-      y = df.iloc[:,1]
 
       #if st.checkbox('Visualización de variable de respuesta'):
       #           st.write(f'# Visualización de {y.name}') 
