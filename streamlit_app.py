@@ -17,7 +17,7 @@ with tabs[0]:
 
   # Load Data
   # Create a list of datasets
-  datasets = ["1.longitud_femur_estatura.csv",
+  datasets.1 = ["1.longitud_femur_estatura.csv",
               "2.Demanda_bebidas_gaseosas.csv",
               "3.Diametro_arbol.csv",
               "4.Nivel_CO2.csv",
@@ -30,7 +30,7 @@ with tabs[0]:
               ]
 
   # Create a dropdown menu to select the dataset
-  selected_dataset = st.selectbox("Seleccione una base de datos", datasets)
+  selected_dataset = st.selectbox("Seleccione una base de datos", datasets.1)
 
   # Read the selected dataset into a pandas Dataframe
   df = pd.read_csv('Datasets/'+selected_dataset)
@@ -167,4 +167,16 @@ with tabs[0]:
         st.pyplot(plt)
 
 with tabs[1]:
-  st.write('# Cargar base de datos')
+  # Load Data
+  # Create a list of datasets
+  datasets.2 = ["Poblacion_Estados_Unidos.csv"
+              ]
+
+  # Create a dropdown menu to select the dataset
+  selected_dataset = st.selectbox("Seleccione una base de datos", datasets.2)
+
+  # Read the selected dataset into a pandas Dataframe
+  df = pd.read_csv('Datasets/'+selected_dataset)
+
+  if st.checkbox('Mostrar base de datos'):
+    st.dataframe(df)
