@@ -178,4 +178,4 @@ with tabs[1]:
   df = pd.read_csv('Datasets/'+selected_dataset_2)
 
   #if st.checkbox('Mostrar base de datos'):
-  #  st.dataframe(df)
+  st.dataframe(df)
