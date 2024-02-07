@@ -35,7 +35,7 @@ with tabs[0]:
   # Read the selected dataset into a pandas Dataframe
   df = pd.read_csv('Datasets/'+selected_dataset_1)
 
-  if selected_dataset != '11.Record_Olimpico.csv':
+  if selected_dataset_1 != '11.Record_Olimpico.csv':
     st.write('# Datos no agrupados')
 
     # Display the Dataframe
