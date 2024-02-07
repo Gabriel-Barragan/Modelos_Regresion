@@ -35,7 +35,7 @@ with tabs[0]:
   # Read the selected dataset into a pandas Dataframe
   df = pd.read_csv('Datasets/'+selected_dataset_1+'.csv')
 
-  if selected_dataset_1 != '11.Record_Olimpico.csv':
+  if selected_dataset_1 != '11.Record_Olimpico':
     # Access X and y variables
     X = df.iloc[:,0]
     y = df.iloc[:,1]
@@ -188,9 +188,22 @@ with tabs[1]:
 
   # Read the selected dataset into a pandas Dataframe
   df_2 = pd.read_csv('Datasets/'+selected_dataset_2+'.csv')
+
+  # Display the Dataframe
+  if st.checkbox('Mostrar base de datos',value=True):
+    st.write('Base de datos: '+selected_dataset_2)
+    st.dataframe(df_2)
+  
+  if selected_dataset_2 == 'Experimentos_curva_olvido':
+    conversion_factors = {
+      'dia': 24,
+      'h': 1,
+      'min': 1/60
+    }
+    df_2['Tiempo_hora'] = df_2.apply(lambda row: row['Tiempo']*conversion_factors[row['DHM']], axis=1)
   
   st.write('# Seleccionar variables y mostrar')
   columns = df_2.columns.tolist()
   selected_columns = st.multiselect('Seleccionar variables', columns)
   filtered_data = df_2[selected_columns]
-  st.dataframe(filtered_data)
+  st.dataframe(filtered_data.head())
