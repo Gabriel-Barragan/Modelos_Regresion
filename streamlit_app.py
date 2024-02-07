@@ -214,4 +214,14 @@ with tabs[1]:
   if st.checkbox('Mostrar estadísticos descriptivos',value=True):
     st.write(filtered_data.describe())
     correlation_coef = X.corr(y)
-    st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
+    #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
+  
+  if st.checkbox('Diagrama de dispersión',value=True):
+    st.write('# Diagrama de dispersión')
+    plt.subplots()
+    plt.title('Diagrama de dispersión')
+    plt.scatter(X,y)
+    plt.xlabel(X.name)
+    plt.ylabel(y.name)
+    # Display the plot in Streamlit
+    st.pyplot(plt)
