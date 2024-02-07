@@ -98,7 +98,7 @@ with tabs[0]:
                                   
       x_min = st.number_input('Valor mínimo x:',value=X.min())
       x_max = st.number_input('Valor máximo x:',value=X.max()) 
-      x_range_prediction = np.arange((0.99)*x_min,(1.01)*x_max,1)
+      x_range_prediction = np.arange((0.95)*x_min,(1.05)*x_max,1)
       y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
          
       plt.subplots()
@@ -123,7 +123,7 @@ with tabs[0]:
     grouped_data = df.groupby('Sexo')
     # Display the Dataframe
     if st.checkbox('Mostrar base de datos'):
-      st.write('Base de datos: '+selected_dataset)
+      st.write('Base de datos: '+selected_dataset_1)
       st.dataframe(df)
             
     if st.checkbox('Mostrar estadísticos descriptivos'):
