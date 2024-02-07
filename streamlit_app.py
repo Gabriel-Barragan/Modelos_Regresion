@@ -211,7 +211,7 @@ with tabs[1]:
   X = filtered_data.iloc[:,0]
   y = filtered_data.iloc[:,1]
 
-  if checkbox('Mostrar estadísticos descriptivos',value=True):
+  if st.checkbox('Mostrar estadísticos descriptivos',value=True):
     st.write(filtered_data.describe())
     correlation_coef = X.corr(y)
     st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
