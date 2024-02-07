@@ -30,17 +30,17 @@ with tabs[0]:
               ]
 
   # Create a dropdown menu to select the dataset
-  selected_dataset = st.selectbox("Seleccione una base de datos", datasets_1)
+  selected_dataset_1 = st.selectbox("Seleccione una base de datos", datasets_1)
 
   # Read the selected dataset into a pandas Dataframe
-  df = pd.read_csv('Datasets/'+selected_dataset)
+  df = pd.read_csv('Datasets/'+selected_dataset_1)
 
   if selected_dataset != '11.Record_Olimpico.csv':
     st.write('# Datos no agrupados')
 
     # Display the Dataframe
     if st.checkbox('Mostrar base de datos'):
-      st.write('Base de datos: '+selected_dataset)
+      st.write('Base de datos: '+selected_dataset_1)
       st.dataframe(df)
 
     if st.checkbox('Mostrar estadísticos descriptivos'):
@@ -173,10 +173,10 @@ with tabs[1]:
               ]
 
   # Create a dropdown menu to select the dataset
-  selected_dataset = st.selectbox("Seleccione una base de datos", datasets_2)
+  selected_dataset_2 = st.selectbox("Seleccione una base de datos", datasets_2)
 
   # Read the selected dataset into a pandas Dataframe
-  df = pd.read_csv('Datasets/'+selected_dataset)
+  df = pd.read_csv('Datasets/'+selected_dataset_2)
 
   if st.checkbox('Mostrar base de datos'):
     st.dataframe(df)
