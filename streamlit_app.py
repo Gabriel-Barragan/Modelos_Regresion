@@ -208,82 +208,73 @@ with tabs[1]:
   
   st.write('# Seleccionar variables y mostrar')
   columns = df_2.columns.tolist()
-  selected_columns = st.multiselect('Seleccionar variables', columns, default=['Anio','Poblacion'])
-  filtered_data = df_2[selected_columns]
-  st.dataframe(filtered_data.head())
+  selected_columns = st.multiselect('Seleccionar variables', columns)
+  if selected_columns:
+    filtered_data = df_2[selected_columns]
+    st.dataframe(filtered_data.head())
 
-  if st.checkbox('Mostrar estadísticos descriptivos', key=next(widget_id)):
     X = filtered_data.iloc[:,0]
     log_X = np.log(X)
     y = filtered_data.iloc[:,1]
     log_y = np.log(y)
-    st.write(filtered_data.describe())
-    #correlation_coef = X.corr(y)
-    #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
+    
+    if st.checkbox('Mostrar estadísticos descriptivos', key=next(widget_id)):
+      st.write(filtered_data.describe())
+      #correlation_coef = X.corr(y)
+      #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
   
-  if st.checkbox('Diagramas de dispersión', key=next(widget_id)):
-    X = filtered_data.iloc[:,0]
-    log_X = np.log(X)
-    y = filtered_data.iloc[:,1]
-    log_y = np.log(y)
-    st.write('# Diagramas de dispersión')
-    fig, axes = plt.subplots(3, 1, figsize=(10,7))
+    if st.checkbox('Diagramas de dispersión', key=next(widget_id)):
+      st.write('# Diagramas de dispersión')
+      fig, axes = plt.subplots(3, 1, figsize=(10,7))
     
-    axes[0].set_title(f'Diagrama de dispersión - '+selected_dataset_2)
-    axes[0].scatter(X,y)
-    axes[0].set_xlabel(X.name)
-    axes[0].set_ylabel(y.name)
+      axes[0].set_title(f'Diagrama de dispersión - '+selected_dataset_2)
+      axes[0].scatter(X,y)
+      axes[0].set_xlabel(X.name)
+      axes[0].set_ylabel(y.name)
 
-    axes[1].set_title(f'Gráfica semi-log - '+selected_dataset_2)
-    axes[1].scatter(X,log_y)
-    axes[1].set_xlabel(X.name)
-    axes[1].set_ylabel('Log '+y.name)
+      axes[1].set_title(f'Gráfica semi-log - '+selected_dataset_2)
+      axes[1].scatter(X,log_y)
+      axes[1].set_xlabel(X.name)
+      axes[1].set_ylabel('Log '+y.name)
 
-    axes[2].set_title(f'Gráfica log-log - '+selected_dataset_2)
-    axes[2].scatter(log_X,log_y)
-    axes[2].set_xlabel('Log '+X.name)
-    axes[2].set_ylabel('Log '+y.name)
+      axes[2].set_title(f'Gráfica log-log - '+selected_dataset_2)
+      axes[2].scatter(log_X,log_y)
+      axes[2].set_xlabel('Log '+X.name)
+      axes[2].set_ylabel('Log '+y.name)
 
-    fig.tight_layout()
+      fig.tight_layout()
     
-    # Display the plot in Streamlit
-    st.pyplot(fig)
+      # Display the plot in Streamlit
+      st.pyplot(fig)
 
-  if st.checkbox('Mostrar modelo de regresión exponencial', key=next(widget_id)):
-    X = filtered_data.iloc[:,0]
-    y = filtered_data.iloc[:,1]
-    log_y = np.log(y)
-    model_exponential = LinearRegression()
-    model_exponential.fit(X.values.reshape(-1,1), log_y)
+    if st.checkbox('Mostrar modelo de regresión exponencial', key=next(widget_id)):
+      model_exponential = LinearRegression()
+      model_exponential.fit(X.values.reshape(-1,1), log_y)
 
-    log_C = model_exponential.intercept_
-    k = model_exponential.coef_[0]
+      log_C = model_exponential.intercept_
+      k = model_exponential.coef_[0]
     
-    st.latex(r'''y = Ce^{kx}  ''')
-    st.write('Linearización')
-    st.latex(r'''\ln(y) = kx + \ln(C) \quad \Rightarrow \quad Y_{\text{exp}} = kx + A_{\text{exp}}''')
-    st.write('donde')
-    st.latex(r'''Y_{\text{exp}}=\ln(y),\quad \text{y}\quad A_{\text{exp}}=\ln(C)''')
-    st.write('Parámetros:')
-    st.latex(r'''k='''+ rf'''{k:.4f}''')
-    st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
+      st.latex(r'''y = Ce^{kx}  ''')
+      st.write('Linearización')
+      st.latex(r'''\ln(y) = kx + \ln(C) \quad \Rightarrow \quad Y_{\text{exp}} = kx + A_{\text{exp}}''')
+      st.write('donde')
+      st.latex(r'''Y_{\text{exp}}=\ln(y),\quad \text{y}\quad A_{\text{exp}}=\ln(C)''')
+      st.write('Parámetros:')
+      st.latex(r'''k='''+ rf'''{k:.4f}''')
+      st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
 
-  if st.checkbox('Mostrar modelo de regresión potencia', key=next(widget_id)):
-    X = filtered_data.iloc[:,0]
-    log_X = np.log(X)
-    y = filtered_data.iloc[:,1]
-    log_y = np.log(y)
-    model_potential = LinearRegression()
-    model_potential.fit(log_X.values.reshape(-1,1), log_y)
+    if st.checkbox('Mostrar modelo de regresión potencia', key=next(widget_id)):
+      model_potential = LinearRegression()
+      model_potential.fit(log_X.values.reshape(-1,1), log_y)
 
-    log_a = model_potential.intercept_
-    n = model_potential.coef_[0]
+      log_a = model_potential.intercept_
+      n = model_potential.coef_[0]
 
-    st.latex(r'''y = ax^{n}  ''')
-    st.write('Linearización')
-    st.latex(r''' \ln(y) = n\ln(x) + \ln(a) \quad \Rightarrow \quad Y_{\text{pot}} = nX_{\text{pot}} + A_{\text{pot}}''')
-    st.write('donde')
-    st.latex(r'''Y_{\text{pot}}=\ln(y),\quad X_{\text{pot}}=\ln(x), \quad \text{y}\quad A_{\text{pot}}=\ln(a)''')
-    st.write('Parámetros:')
-    st.latex(r'''n='''+ rf'''{n:.4f}''')
-    st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
+      st.latex(r'''y = ax^{n}  ''')
+      st.write('Linearización')
+      st.latex(r''' \ln(y) = n\ln(x) + \ln(a) \quad \Rightarrow \quad Y_{\text{pot}} = nX_{\text{pot}} + A_{\text{pot}}''')
+      st.write('donde')
+      st.latex(r'''Y_{\text{pot}}=\ln(y),\quad X_{\text{pot}}=\ln(x), \quad \text{y}\quad A_{\text{pot}}=\ln(a)''')
+      st.write('Parámetros:')
+      st.latex(r'''n='''+ rf'''{n:.4f}''')
+      st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
