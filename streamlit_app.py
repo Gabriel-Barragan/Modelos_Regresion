@@ -260,6 +260,6 @@ with tabs[1]:
     log_C = model_exponential.intercept_
     k = model_exponential.coef_[0]
     
-    st.latex(r'''y = Ce^{kx}''')
-    st.write(f'{log_C}')
-    st.write(f'{k}')
+    st.latex(r'''y = Ce^{kx} \quad \Rightarrow \quad \ln(y) = kx + \ln(C)''')
+    st.latex('''\ln(C)='''+ rf'''{log_C:.4f}''')
+    st.latex('''k='''+ rf'''{k:.4f}''')
