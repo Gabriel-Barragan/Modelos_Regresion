@@ -218,6 +218,10 @@ with tabs[1]:
     #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
   
   if st.checkbox('Diagramas de dispersión',value=True):
+    X = filtered_data.iloc[:,0]
+    log_X = np.log(X)
+    y = filtered_data.iloc[:,1]
+    log_y = np.log(y)
     st.write('# Diagramas de dispersión')
     fig, axes = plt.subplots(3, 1, figsize=(10,7))
     
