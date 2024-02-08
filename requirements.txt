@@ -1,5 +1,4 @@
 matplotlib
-math
 pandas
 scikit-learn
 scipy
