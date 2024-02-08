@@ -257,4 +257,4 @@ with tabs[1]:
     k = model_exponential.coef_[0]
     
     st.latex(r'''y = Ce^{kx}''')
-    st.write(rf'''\text{Parámetros:} \quad C={C:.4f},\quad k={k:.4f}''')
+    st.latex(rf'''\text{Parámetros:} \quad C={C:.4f},\quad k={k:.4f}''')
