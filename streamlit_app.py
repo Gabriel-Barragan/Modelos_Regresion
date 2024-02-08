@@ -256,4 +256,4 @@ with tabs[1]:
     C = np.exp(model_exponential.intercept_)
     k = model_exponential.coef_[0]
     
-    st.write(f'$$y = Ce^{kx}$$ donde {k:.2f}')
+    st.write(r'= Ce^{kx}'+rf' donde k={k}')
