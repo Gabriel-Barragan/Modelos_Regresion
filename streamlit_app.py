@@ -335,4 +335,4 @@ with tabs[1]:
         st.latex(r'''n='''+ rf'''{n:.4f}''')
         st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
 
-        st.write(f"$$y = {a:.4e}x^{{{n:.4f}}}$$")
+        st.write(f"$$y = {a:.4f}x^{{{n:.4f}}}$$")
