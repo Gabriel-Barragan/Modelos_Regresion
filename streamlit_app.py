@@ -220,24 +220,24 @@ with tabs[1]:
   
   if st.checkbox('Diagramas de dispersión',value=True):
     st.write('# Diagramas de dispersión')
-    plt.subplots(1,3)
+    fig, axes = plt.subplots(1,3, figsize=(15,3))
     
-    plt.title('Diagrama de dispersión {selected_dataset_2}')
-    plt.scatter(X,y)
-    plt.xlabel(X.name)
-    plt.ylabel(y.name)
+    axes[0].set_title(f'Diagrama de dispersión {selected_dataset_2}')
+    axes[0].scatter(X,y)
+    axes[0].set_xlabel(X.name)
+    axes[0].set_ylabel(y.name)
 
-    plt.title('Gráfica semi-log {selected_dataset_2}')
-    plt.scatter(X,log_y)
-    plt.xlabel(X.name)
-    plt.ylabel('Log '+y.name)
+    axes[1].set_title(f'Gráfica semi-log {selected_dataset_2}')
+    axes[1].scatter(X,log_y)
+    axes[1].set_xlabel(X.name)
+    axes[1].set_ylabel('Log '+y.name)
 
-    plt.title('Gráfica log-log {selected_dataset_2}')
-    plt.scatter(log_X,log_y)
-    plt.xlabel('Log '+X.name)
-    plt.ylabel('Log '+y.name)
+    axes[2].set_title(f'Gráfica log-log {selected_dataset_2}')
+    axes[2].scatter(log_X,log_y)
+    axes[2].set_xlabel('Log '+X.name)
+    axes[2].set_ylabel('Log '+y.name)
     
     # Display the plot in Streamlit
-    st.pyplot(plt)
+    st.pyplot(fig)
 
   #if st.checkbox('Mostrar modelo de regresión exponencial'):
