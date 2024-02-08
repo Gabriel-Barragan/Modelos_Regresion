@@ -251,9 +251,9 @@ with tabs[1]:
 
   if st.checkbox('Mostrar modelo de regresión exponencial', key=next(widget_id)):
     model_exponential = LinearRegression()
-    model_exponential.fit(X.values.reshape(-1,1), y)
+    model_exponential.fit(X.values.reshape(-1,1), log_y)
 
     C = model_exponential.intercept_
     k = model_exponential.coef_[0]
     
-    st.latex(r'''y = Ce^{kx},'''+ rf'''\quad C={C},\quad k={k:.4f}''')
+    st.latex(r'''y = Ce^{kx},\text{con}'''+ rf'''\quad C={C:.4f},\quad k={k:.4f}''')
