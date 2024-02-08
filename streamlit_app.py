@@ -275,7 +275,7 @@ with tabs[1]:
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión exponencial')
         st.write('x: ',X.name)
-        input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X_min)
+        input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X.min())
         predicted_value = model_exponential.predict([[input_value]])
         st.write(f'En el año {X_min+input_value}, se tiene que {y.name} es {np.exp(predicted_value[0]):.2f}')
       
