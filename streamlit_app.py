@@ -223,9 +223,9 @@ with tabs[1]:
     st.dataframe(filtered_data.head())
     
     X = filtered_data.iloc[:,0]
-    if X.name == 'Anio':
-      X_min = X.min()
-      X = X - X_min
+    #if X.name == 'Anio':
+    #  X_min = X.min()
+    #  X = X - X_min
     log_X = np.log(X)
     y = filtered_data.iloc[:,1]
     log_y = np.log(y)
