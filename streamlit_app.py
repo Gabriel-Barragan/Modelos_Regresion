@@ -324,6 +324,13 @@ with tabs[1]:
         st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
 
         st.write(f"$$y = {C:.4f}x^{{{k:.4f}}}$$")
+
+        # Predict a new value
+        st.write('# Predicción de valores con el modelo de regresión exponencial')
+        st.write('x: ',X.name)
+        input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X.min())
+        predicted_value = model_exponential.predict([[input_value]])
+        st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(predicted_value[0]):.2f}')
       
       if st.checkbox('Mostrar modelo de regresión potencia', key=next(widget_id)):
         model_potential = LinearRegression()
@@ -343,3 +350,10 @@ with tabs[1]:
         st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
 
         st.write(f"$$y = {a:.4f}x^{{{n:.4f}}}$$")
+
+        # Predict a new value
+        st.write('# Predicción de valores con el modelo de regresión potencia')
+        st.write('x: ',X.name)
+        input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X.min())
+        predicted_value = model_exponential.predict([[np.log(input_value)]])
+        st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(predicted_value[0]):.2f}')
