@@ -251,7 +251,6 @@ with tabs[1]:
 
   if st.checkbox('Mostrar modelo de regresión exponencial', key=next(widget_id)):
     X = filtered_data.iloc[:,0]
-    log_X = np.log(X)
     y = filtered_data.iloc[:,1]
     log_y = np.log(y)
     model_exponential = LinearRegression()
@@ -262,9 +261,29 @@ with tabs[1]:
     
     st.latex(r'''y = Ce^{kx}  ''')
     st.write('Linearización')
-    st.latex(r'''\ln(y) = kx + \ln(C) \quad \Rightarrow \quad Y = kx + A''')
+    st.latex(r'''\ln(y) = kx + \ln(C) \quad \Rightarrow \quad Y_{\text{exp}} = kx + A_{\text{exp}}''')
     st.write('donde')
-    st.latex(r'''Y=\ln(y),\; \text{y}\; A=\ln(C)''')
+    st.latex(r'''Y_{\text{exp}}=\ln(y),\; \text{y}\; A_{\text{exp}}=\ln(C)''')
     st.write('Parámetros:')
     st.latex('''k='''+ rf'''{k:.4f}''')
-    st.latex('''\ln(C)='''+ rf'''{log_C:.4f}''')
+    st.latex('''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
+
+  if st.checkbox('Mostrar modelo de regresión potencia', key=next(widget_id)):
+    X = filtered_data.iloc[:,0]
+    log_X = np.log(X)
+    y = filtered_data.iloc[:,1]
+    log_y = np.log(y)
+    model_potential = LinearRegression()
+    model_potential.fit(log_X.values.reshape(-1,1), log_y)
+
+    log_a = model_exponential.intercept_
+    n = model_exponential.coef_[0]
+
+    st.latex(r'''y = ax^{n}  ''')
+    st.write('Linearización')
+    st.latex(r'''\ln(y) = n\ln(x) + \ln(a) \quad \Rightarrow \quad Y_{\text{pot}} = nX__{\text{pot}} + A_{\text{pot}}''')
+    st.write('donde')
+    st.latex(r'''Y_{\text{pot}}=\ln(y),\; X__{\text{pot}}=\ln(x), \; \text{y}\; A_{\text{pot}}=\ln(a)''')
+    st.write('Parámetros:')
+    st.latex('''n='''+ rf'''{n:.4f}''')
+    st.latex('''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
