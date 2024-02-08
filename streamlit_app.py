@@ -271,6 +271,13 @@ with tabs[1]:
         st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
 
         st.write(f"$$y = {C:.4f}x^{{{k:.4f}}}$$")
+
+        # Predict a new value
+        st.write('# Predicción de valores con el modelo de regresión exponencial')
+        st.write('x: ',X.name)
+        input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X_min)
+        predicted_value = model_exponential.predict([[input_value]])
+        st.write(f'En el año {X_min+input_value}, se tiene que {y.name} es {np.exp(predicted_value[0]):.2f}')
       
     else:
       log_X = np.log(X)   
