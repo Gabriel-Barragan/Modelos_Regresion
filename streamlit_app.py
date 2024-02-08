@@ -220,19 +220,19 @@ with tabs[1]:
   
   if st.checkbox('Diagramas de dispersión',value=True):
     st.write('# Diagramas de dispersión')
-    fig, axes = plt.subplots(1,3, figsize=(12,4))
+    fig, axes = plt.subplots(1,3, figsize=(15,3))
     
-    axes[0].set_title(f'Diagrama de dispersión {selected_dataset_2}')
+    axes[0].set_title(f'Diagrama de dispersión')
     axes[0].scatter(X,y)
     axes[0].set_xlabel(X.name)
     axes[0].set_ylabel(y.name)
 
-    axes[1].set_title(f'Gráfica semi-log {selected_dataset_2}')
+    axes[1].set_title(f'Gráfica semi-log')
     axes[1].scatter(X,log_y)
     axes[1].set_xlabel(X.name)
     axes[1].set_ylabel('Log '+y.name)
 
-    axes[2].set_title(f'Gráfica log-log {selected_dataset_2}')
+    axes[2].set_title(f'Gráfica log-log')
     axes[2].scatter(log_X,log_y)
     axes[2].set_xlabel('Log '+X.name)
     axes[2].set_ylabel('Log '+y.name)
