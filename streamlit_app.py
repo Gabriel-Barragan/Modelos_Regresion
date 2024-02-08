@@ -257,7 +257,8 @@ with tabs[1]:
     model_exponential = LinearRegression()
     model_exponential.fit(X.values.reshape(-1,1), log_y)
 
-    C = model_exponential.intercept_
+    C = np.exp(model_exponential.intercept_)
     k = model_exponential.coef_[0]
     
-    st.latex(r'''y = Ce^{kx}, \quad \text{Parámetros: }''' + rf''' C = {:e}.format(C), \quad k = {k:.4e}''')
+    st.latex(r'''y = Ce^{kx}''')
+    st.write(f'{C}')
