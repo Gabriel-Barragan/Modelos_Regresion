@@ -122,7 +122,11 @@ with tabs[0]:
       input_value = st.number_input('Introduce un valor de x', value=X.min())
 
       predicted_value = model.predict([[input_value]])
-      st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
+      
+      if X.name=='Anio':
+        st.write(f'En el año {x_min+input_value}, se tiene que {y.name} es {predicted_value[0]:.2f}')
+      else:
+        st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
   
   else: 
     st.write('# Datos agrupados')
