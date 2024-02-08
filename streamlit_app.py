@@ -301,6 +301,7 @@ with tabs[1]:
         model_exponential.fit(X.values.reshape(-1,1), log_y)
 
         log_C = model_exponential.intercept_
+        C = np.exp(log_C)
         k = model_exponential.coef_[0]
     
         st.latex(r'''y = Ce^{kx}  ''')
@@ -311,6 +312,8 @@ with tabs[1]:
         st.write('Parámetros:')
         st.latex(r'''k='''+ rf'''{k:.4f}''')
         st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
+
+        st.write(f"$y = {C}x^{{{k}}}$")
       
       if st.checkbox('Mostrar modelo de regresión potencia', key=next(widget_id)):
         model_potential = LinearRegression()
