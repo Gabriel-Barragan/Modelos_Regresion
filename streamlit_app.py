@@ -251,6 +251,6 @@ with tabs[1]:
     model_exponential.fit(X.values.reshape(-1,1), y)
 
     C = np.exp(model.intercept_)
-    k = model.coef_[0]
+    k = model_exponential.coef_[0]
     
     st.write('$$y = Ce^{kx}=$$')
