@@ -256,4 +256,4 @@ with tabs[1]:
     C = np.exp(model_exponential.intercept_)
     k = model_exponential.coef_[0]
     
-    st.write(r'''\theta_b='''+ rf'''{k} ''')
+    st.latex(r'''\theta_b='''+ rf'''{k} ''')
