@@ -265,8 +265,8 @@ with tabs[1]:
     st.write('donde')
     st.latex(r'''Y_{\text{exp}}=\ln(y),\; \text{y}\; A_{\text{exp}}=\ln(C)''')
     st.write('Parámetros:')
-    st.latex('''k='''+ rf'''{k:.4f}''')
-    st.latex('''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
+    st.latex(r'''k='''+ rf'''{k:.4f}''')
+    st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
 
   if st.checkbox('Mostrar modelo de regresión potencia', key=next(widget_id)):
     X = filtered_data.iloc[:,0]
@@ -285,5 +285,5 @@ with tabs[1]:
     st.write('donde')
     st.latex(r'''Y_{\text{pot}}=\ln(y),\; X__{\text{pot}}=\ln(x), \; \text{y}\; A_{\text{pot}}=\ln(a)''')
     st.write('Parámetros:')
-    st.latex('''n='''+ rf'''{n:.4f}''')
-    st.latex('''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
+    st.latex(r'''n='''+ rf'''{n:.4f}''')
+    st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
