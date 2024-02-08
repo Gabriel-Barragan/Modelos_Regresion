@@ -208,12 +208,11 @@ with tabs[1]:
   filtered_data = df_2[selected_columns]
   st.dataframe(filtered_data.head())
 
-  X = filtered_data.iloc[:,0]
-  log_X = np.log(X)
-  y = filtered_data.iloc[:,1]
-  log_y = np.log(y)
-
   if st.checkbox('Mostrar estadísticos descriptivos',value=True):
+    X = filtered_data.iloc[:,0]
+    log_X = np.log(X)
+    y = filtered_data.iloc[:,1]
+    log_y = np.log(y)
     st.write(filtered_data.describe())
     #correlation_coef = X.corr(y)
     #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
