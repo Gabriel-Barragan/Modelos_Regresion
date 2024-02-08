@@ -250,7 +250,7 @@ with tabs[1]:
     model_exponential = LinearRegression()
     model_exponential.fit(X.values.reshape(-1,1), y)
 
-    C = np.exp(model.intercept_)
+    C = np.exp(model_exponential.intercept_)
     k = model_exponential.coef_[0]
     
     st.write('$$y = Ce^{kx}=$$')
