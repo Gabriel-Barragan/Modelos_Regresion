@@ -250,11 +250,14 @@ with tabs[1]:
     st.pyplot(fig)
 
   if st.checkbox('Mostrar modelo de regresión exponencial', key=next(widget_id)):
+    X = filtered_data.iloc[:,0]
+    log_X = np.log(X)
+    y = filtered_data.iloc[:,1]
+    log_y = np.log(y)
     model_exponential = LinearRegression()
     model_exponential.fit(X.values.reshape(-1,1), log_y)
 
     C = model_exponential.intercept_
     k = model_exponential.coef_[0]
     
-    st.latex(r'''y = Ce^{kx}''')
-    st.write(f'Parámetros: C = {C:.4f}, y k = {k:.4f}')
+    st.latex(r'''y = Ce^{kx}''' + rf'''\quad \text{Parámetros}: C = {C:.4f}, \quad k = {k:.4f}''')
