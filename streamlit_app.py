@@ -124,7 +124,7 @@ with tabs[0]:
       predicted_value = model.predict([[input_value]])
       
       if X.name=='Anio':
-        st.write(f'En el año {x_min+input_value}, se tiene que {y.name} es {predicted_value[0]:.2f}')
+        st.write(f'En el año {X_min+input_value}, se tiene que {y.name} es {predicted_value[0]:.2f}')
       else:
         st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
   
