@@ -1,11 +1,11 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
-import seaborn as sns
 import scipy.stats as stats
+import seaborn as sns
+
 from sklearn.linear_model import LinearRegression
-import math
 
 st.title('Regresión lineal')
 st.markdown('*Autor: Gabriel Barragán*')
@@ -250,7 +250,7 @@ with tabs[1]:
     model_exponential = LinearRegression()
     model_exponential.fit(X.values.reshape(-1,1), y)
 
-    C = math.exp(model.intercept_)
+    C = np.exp(model.intercept_)
     k = model.coef_[0]
     
     st.write('$$y = Ce^{kx}=$$')
