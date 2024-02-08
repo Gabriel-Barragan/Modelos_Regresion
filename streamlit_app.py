@@ -7,7 +7,7 @@ import seaborn as sns
 
 from sklearn.linear_model import LinearRegression
 
-st.title('Regresión lineal')
+st.title('Modelos de regresión')
 st.markdown('*Autor: Gabriel Barragán*')
 
 tab_titles = ['Regresión lineal','Regresión exponencial','Otros']
@@ -258,6 +258,7 @@ with tabs[1]:
         model_exponential.fit(X.values.reshape(-1,1), log_y)
 
         log_C = model_exponential.intercept_
+        C = np.exp(log_C)
         k = model_exponential.coef_[0]
     
         st.latex(r'''y = Ce^{kx}  ''')
@@ -268,6 +269,8 @@ with tabs[1]:
         st.write('Parámetros:')
         st.latex(r'''k='''+ rf'''{k:.4f}''')
         st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
+
+        st.write(f"$$y = {C:.4f}x^{{{k:.4f}}}$$")
       
     else:
       log_X = np.log(X)   
@@ -313,13 +316,14 @@ with tabs[1]:
         st.latex(r'''k='''+ rf'''{k:.4f}''')
         st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
 
-        st.write(f"$y = {C}x^{{{k}}}$")
+        st.write(f"$$y = {C:.4f}x^{{{k:.4f}}}$$")
       
       if st.checkbox('Mostrar modelo de regresión potencia', key=next(widget_id)):
         model_potential = LinearRegression()
         model_potential.fit(log_X.values.reshape(-1,1), log_y)
 
         log_a = model_potential.intercept_
+        a = np.exp(log_a)
         n = model_potential.coef_[0]
 
         st.latex(r'''y = ax^{n}  ''')
@@ -330,3 +334,5 @@ with tabs[1]:
         st.write('Parámetros:')
         st.latex(r'''n='''+ rf'''{n:.4f}''')
         st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
+
+        st.write(f"$$y = {a:.4f}x^{{{n:.4f}}}$$")
