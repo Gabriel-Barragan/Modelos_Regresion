@@ -220,7 +220,7 @@ with tabs[1]:
   
   if st.checkbox('Diagramas de dispersión',value=True):
     st.write('# Diagramas de dispersión')
-    fig, axes = plt.subplots(1,3, figsize=(20,5))
+    fig, axes = plt.subplots(1,3, figsize=(50,20))
     
     axes[0].set_title(f'Diagrama de dispersión {selected_dataset_2}')
     axes[0].scatter(X,y)
