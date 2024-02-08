@@ -276,12 +276,12 @@ with tabs[1]:
     model_potential = LinearRegression()
     model_potential.fit(log_X.values.reshape(-1,1), log_y)
 
-    log_a = model_exponential.intercept_
-    n = model_exponential.coef_[0]
+    log_a = model_potential.intercept_
+    n = model_potential.coef_[0]
 
     st.latex(r'''y = ax^{n}  ''')
     st.write('Linearización')
-    st.latex(r'''\ln(y) = n\ln(x) + \ln(a) \quad \Rightarrow \quad Y_{\text{pot}} = nX__{\text{pot}} + A_{\text{pot}}''')
+    st.latex(r''' \ln(y) = n\ln(x) + \ln(a) \quad \Rightarrow \quad Y_{\text{pot}} = nX__{\text{pot}} + A_{\text{pot}}''')
     st.write('donde')
     st.latex(r'''Y_{\text{pot}}=\ln(y),\; X__{\text{pot}}=\ln(x), \; \text{y}\; A_{\text{pot}}=\ln(a)''')
     st.write('Parámetros:')
