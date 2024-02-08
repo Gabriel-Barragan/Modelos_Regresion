@@ -13,6 +13,8 @@ st.markdown('*Autor: Gabriel Barragán*')
 tab_titles = ['Regresión lineal','Regresión exponencial','Otros']
 tabs = st.tabs(tab_titles)
 
+widget_id = (id for id in range(1, 100_00))
+
 with tabs[0]:
   st.write('# Cargar base de datos')
 
@@ -192,7 +194,7 @@ with tabs[1]:
   df_2 = pd.read_csv('Datasets/'+selected_dataset_2+'.csv')
 
   # Display the Dataframe
-  if st.checkbox('Mostrar base de datos',value=True):
+  if st.checkbox('Mostrar base de datos', key=next(widget_id)):
     st.write('Base de datos: '+selected_dataset_2)
     st.dataframe(df_2)
   
@@ -210,7 +212,7 @@ with tabs[1]:
   filtered_data = df_2[selected_columns]
   st.dataframe(filtered_data.head())
 
-  if st.checkbox('Mostrar estadísticos descriptivos',value=False):
+  if st.checkbox('Mostrar estadísticos descriptivos', key=next(widget_id)):
     X = filtered_data.iloc[:,0]
     log_X = np.log(X)
     y = filtered_data.iloc[:,1]
@@ -219,7 +221,7 @@ with tabs[1]:
     #correlation_coef = X.corr(y)
     #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
   
-  if st.checkbox('Diagramas de dispersión',value=False):
+  if st.checkbox('Diagramas de dispersión', key=next(widget_id)):
     X = filtered_data.iloc[:,0]
     log_X = np.log(X)
     y = filtered_data.iloc[:,1]
@@ -247,7 +249,7 @@ with tabs[1]:
     # Display the plot in Streamlit
     st.pyplot(fig)
 
-  if st.checkbox('Mostrar modelo de regresión exponencial', value=False):
+  if st.checkbox('Mostrar modelo de regresión exponencial', key=next(widget_id)):
     model_exponential = LinearRegression()
     model_exponential.fit(X.values.reshape(-1,1), y)
 
