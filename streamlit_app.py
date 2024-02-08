@@ -41,6 +41,10 @@ with tabs[0]:
   if selected_dataset_1 != '11.Record_Olimpico':
     # Access X and y variables
     X = df.iloc[:,0]
+    if X.name=='Anio':
+      X_min = X.min()
+      X = X - X_min
+    
     y = df.iloc[:,1]
     st.write('# Datos no agrupados')
 
