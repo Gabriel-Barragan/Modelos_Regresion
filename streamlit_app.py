@@ -208,7 +208,7 @@ with tabs[1]:
   
   st.write('# Seleccionar variables y mostrar')
   columns = df_2.columns.tolist()
-  selected_columns = st.multiselect('Seleccionar variables', columns) # , default=['Anio','Poblacion']
+  selected_columns = st.multiselect('Seleccionar variables', columns, default=['Anio','Poblacion'])
   filtered_data = df_2[selected_columns]
   st.dataframe(filtered_data.head())
 
