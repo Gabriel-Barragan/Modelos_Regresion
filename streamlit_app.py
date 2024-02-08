@@ -260,10 +260,11 @@ with tabs[1]:
     log_C = model_exponential.intercept_
     k = model_exponential.coef_[0]
     
-    st.latex(r'''y = Ce^{kx} \quad \Rightarrow \quad \ln(y) = kx + \ln(C)''')
+    st.latex(r'''y = Ce^{kx}  ''')
     st.write('Linearización')
-    st.latex(r'''Y = kx + A, \; \text{donde } Y=\ln(y),\; \text{y}\; A=\ln(C)''')
-    
+    st.latex(r'''\ln(y) = kx + \ln(C) \quad \Rightarrow \quad Y = kx + A''')
+    st.write('donde')
+    st.latex(r'''Y=\ln(y),\; \text{y}\; A=\ln(C)''')
     st.write('Parámetros:')
     st.latex('''k='''+ rf'''{k:.4f}''')
     st.latex('''\ln(C)='''+ rf'''{log_C:.4f}''')
