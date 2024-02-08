@@ -260,4 +260,4 @@ with tabs[1]:
     C = model_exponential.intercept_
     k = model_exponential.coef_[0]
     
-    st.latex(r'''y = Ce^{kx}, \quad \text{Parámetros: }''' + re''' C = {C:.4e}, \quad k = {k:.4e}''')
+    st.latex(r'''y = Ce^{kx}, \quad \text{Parámetros: }''' + rf''' C = {:e}".format(C), \quad k = {k:.4e}''')
