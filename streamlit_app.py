@@ -256,4 +256,4 @@ with tabs[1]:
     C = np.exp(model_exponential.intercept_)
     k = model_exponential.coef_[0]
     
-    st.latex(r'''y = Ce^{kx},'''+ rf'''\quad C={C:.4f},\quad k={k:.4f}''')
+    st.latex(r'''y = Ce^{kx},'''+ rf'''\quad C={C},\quad k={k:.4f}''')
