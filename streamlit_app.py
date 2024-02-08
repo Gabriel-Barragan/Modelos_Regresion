@@ -143,7 +143,7 @@ with tabs[0]:
       for name, group in grouped_data:
         st.write(f"Coeficiente de correlación ({name}): R = {group['Anio'].corr(group['Tiempo']):.2f}")
                         
-        # Bar chart of number of athletes per country, grouped by sex
+      # Bar chart of number of athletes per country, grouped by sex
       plt.subplots()
       plt.title('Número de atletas por país agrupados por sexo')
       sns.histplot(data=df, y="Pais", hue="Sexo", stat="count", multiple="dodge", shrink=0.75)
@@ -221,8 +221,11 @@ with tabs[1]:
   if selected_columns:
     filtered_data = df_2[selected_columns]
     st.dataframe(filtered_data.head())
-
+    
     X = filtered_data.iloc[:,0]
+    if X.name == 'Anio':
+      X_min = X.min()
+      X = X - X_min
     log_X = np.log(X)
     y = filtered_data.iloc[:,1]
     log_y = np.log(y)
