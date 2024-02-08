@@ -119,13 +119,14 @@ with tabs[0]:
       # Predict a new value
       st.write('# Predicción de valores con el modelo de regresión lineal')
       st.write('x: ',X.name)
-      input_value = st.number_input('Introduce un valor de x', value=X.min())
-
-      predicted_value = model.predict([[input_value]])
-      
+            
       if X.name=='Anio':
+        input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X.min())
+        predicted_value = model.predict([[input_value]])
         st.write(f'En el año {X_min+input_value}, se tiene que {y.name} es {predicted_value[0]:.2f}')
       else:
+        input_value = st.number_input('Introduce un valor de x', value=X.min())
+        predicted_value = model.predict([[input_value]])
         st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value[0]:.2f}')
   
   else: 
