@@ -185,7 +185,7 @@ with tabs[1]:
   st.write('# Cargar base de datos')
   
   # Create a dropdown menu to select the dataset
-  selected_dataset_2 = st.selectbox("Seleccione una base de datos", datasets_2)
+  selected_dataset_2 = st.selectbox("Seleccione una base de datos", datasets_2, default=['Datasets/Poblacion_Estados_Unidos.csv'])
 
   # Read the selected dataset into a pandas Dataframe
   
@@ -210,7 +210,7 @@ with tabs[1]:
   filtered_data = df_2[selected_columns]
   st.dataframe(filtered_data.head())
 
-  if st.checkbox('Mostrar estadísticos descriptivos',value=True):
+  if st.checkbox('Mostrar estadísticos descriptivos',value=False):
     X = filtered_data.iloc[:,0]
     log_X = np.log(X)
     y = filtered_data.iloc[:,1]
@@ -219,7 +219,7 @@ with tabs[1]:
     #correlation_coef = X.corr(y)
     #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
   
-  if st.checkbox('Diagramas de dispersión',value=True):
+  if st.checkbox('Diagramas de dispersión',value=False):
     X = filtered_data.iloc[:,0]
     log_X = np.log(X)
     y = filtered_data.iloc[:,1]
@@ -247,11 +247,11 @@ with tabs[1]:
     # Display the plot in Streamlit
     st.pyplot(fig)
 
-  if st.checkbox('Mostrar modelo de regresión exponencial', value=True):
+  if st.checkbox('Mostrar modelo de regresión exponencial', value=False):
     model_exponential = LinearRegression()
     model_exponential.fit(X.values.reshape(-1,1), y)
 
     C = np.exp(model_exponential.intercept_)
     k = model_exponential.coef_[0]
     
-    st.write('$$y = Ce^{kx}=$$')
+    st.write(f'$$y = Ce^{kx}={C:.2f}e^{k:.2f}x$$')
