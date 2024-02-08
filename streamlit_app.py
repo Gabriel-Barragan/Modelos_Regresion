@@ -188,7 +188,7 @@ with tabs[1]:
   selected_dataset_2 = st.selectbox("Seleccione una base de datos", datasets_2)
 
   # Read the selected dataset into a pandas Dataframe
-  df_2 = pd.read_csv('Datasets/Poblacion_Estados_Unidos.csv')
+  
   df_2 = pd.read_csv('Datasets/'+selected_dataset_2+'.csv')
 
   # Display the Dataframe
@@ -206,8 +206,7 @@ with tabs[1]:
   
   st.write('# Seleccionar variables y mostrar')
   columns = df_2.columns.tolist()
-  selected_columns = ['Anio', 'Poblacion']
-  selected_columns = st.multiselect('Seleccionar variables', columns)
+  selected_columns = st.multiselect('Seleccionar variables', columns, default=['Anio'])
   filtered_data = df_2[selected_columns]
   st.dataframe(filtered_data.head())
 
