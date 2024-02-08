@@ -222,7 +222,7 @@ with tabs[1]:
     st.write('# Diagramas de dispersión')
     fig, axes = plt.subplots(3, 1)
 
-    plt.figure(constrained_layout=True)
+    plt.figure(constrained_layout=True, tight_layout=True)
     
     axes[0].set_title(f'Diagrama de dispersión')
     axes[0].scatter(X,y)
