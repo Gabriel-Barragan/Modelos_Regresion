@@ -256,4 +256,4 @@ with tabs[1]:
     C = np.exp(model_exponential.intercept_)
     k = model_exponential.coef_[0]
     
-    st.write(f'$$y = Ce^{kx}={C:.2f}e^{k:.2f}x$$')
+    st.write(r'$$y = Ce^{kx}={C}e^{k}x$$')
