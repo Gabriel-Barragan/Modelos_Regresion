@@ -185,7 +185,7 @@ with tabs[1]:
   st.write('# Cargar base de datos')
   
   # Create a dropdown menu to select the dataset
-  selected_dataset_2 = st.selectbox("Seleccione una base de datos", datasets_2, default=['Datasets/Poblacion_Estados_Unidos.csv'])
+  selected_dataset_2 = st.selectbox("Seleccione una base de datos", datasets_2)
 
   # Read the selected dataset into a pandas Dataframe
   
