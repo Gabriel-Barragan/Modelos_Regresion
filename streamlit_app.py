@@ -263,6 +263,7 @@ with tabs[1]:
     st.latex(r'''y = Ce^{kx} \quad \Rightarrow \quad \ln(y) = kx + \ln(C)''')
     st.write('Linearización')
     st.latex(r'''Y = kx + A, \; \text{donde } Y=\ln(y),\; \text{y}\; A=\ln(C)''')
-    st.latex('''\ln(C)='''+ rf'''{log_C:.4f}''')
+    
     st.write('Parámetros:')
     st.latex('''k='''+ rf'''{k:.4f}''')
+    st.latex('''\ln(C)='''+ rf'''{log_C:.4f}''')
