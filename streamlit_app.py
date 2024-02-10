@@ -271,7 +271,7 @@ with tabs[1]:
         st.latex(r'''A_{\text{exp}}=\ln(C)=''' + rf'''{log_C:.4f}''' + r'''\quad \Rightarrow \quad C=''' + rf'''{C:.4f}''')
 
         st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}x^{{{k:.4f}}}$$")
-        st.write(f'\text{Coeficiente de determinación: }')
+        st.write(f'Coeficiente de determinación:')
         st.latex(r'''R^2='''+rf'{r2_score(X, log_y):.4f}''')
 
         # Predict a new value
