@@ -1,6 +1,7 @@
 # Modelos de regresión
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire. :heart:
+Edite `/streamlit_app.py`. :heart:
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+Correo electrónico personal: gabielbar95[at]gmail.com
+Correo electrónico institucional: gbarragan[at]yachaytech.edu.ec
+Página institucional: [https://www.yachaytech.edu.ec/perfil/gabriel-barragan/?source=academy](https://www.yachaytech.edu.ec/perfil/gabriel-barragan/?source=academy).
