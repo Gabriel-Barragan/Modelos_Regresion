@@ -348,7 +348,7 @@ with tabs[1]:
         st.latex(r'''n='''+ rf'''{n:.4f}''')
         st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''' + r'''\quad \Rightarrow \quad a=''' + rf'''{a:.6f}''')
 
-        st.write(f"Modelo de regresión potencia: $$y = {a:.4f}x^{{{n:.4f}}}$$")
+        st.write(f"Modelo de regresión potencia: $$y = {a:.6f}x^{{{n:.4f}}}$$")
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión potencia')
