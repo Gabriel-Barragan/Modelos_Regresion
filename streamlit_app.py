@@ -274,7 +274,7 @@ with tabs[1]:
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión exponencial')
         st.write('x: ',X.name)
-        input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X.min())
+        input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X.min(), key=next(widget_id))
         predicted_value = model_exponential.predict([[input_value]])
         st.write(f'En el año {X_min+input_value}, se tiene que {y.name} es {np.exp(predicted_value[0]):.2f}')
       
@@ -320,14 +320,14 @@ with tabs[1]:
         st.latex(r'''Y_{\text{exp}}=\ln(y),\quad \text{y}\quad A_{\text{exp}}=\ln(C)''')
         st.write('Parámetros:')
         st.latex(r'''k='''+ rf'''{k:.4f}''')
-        st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
+        st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''' + r'''\quad \Rightarrow \quad C=''' + rf'''{C:.4f}''')
 
         st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}x^{{{k:.4f}}}$$")
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión exponencial')
         st.write('x: ',X.name)
-        input_value = st.number_input(f'Introduce un valor de X', value=X.min())
+        input_value = st.number_input(f'Introduce un valor de X', value=X.min(), key=next(widget_id))
         predicted_value = model_exponential.predict([[input_value]])
         st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(predicted_value[0]):.2f}')
       
@@ -346,14 +346,14 @@ with tabs[1]:
         st.latex(r'''Y_{\text{pot}}=\ln(y),\quad X_{\text{pot}}=\ln(x), \quad \text{y}\quad A_{\text{pot}}=\ln(a)''')
         st.write('Parámetros:')
         st.latex(r'''n='''+ rf'''{n:.4f}''')
-        st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
+        st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''' + r'''\quad \Rightarrow \quad a=''' + rf'''{a:.4f}''')
 
         st.write(f"Modelo de regresión potencia: $$y = {a:.4f}x^{{{n:.4f}}}$$")
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión potencia')
         st.write('x: ',X.name)
-        input_value = st.number_input(f'Introduce un valor de X', value=X.min())
+        input_value = st.number_input(f'Introduce un valor de X', value=X.min(), key=next(widget_id))
         predicted_value = model_exponential.predict([[np.log(input_value)]])
         st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(predicted_value[0]):.2f}')
 
