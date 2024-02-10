@@ -346,7 +346,7 @@ with tabs[1]:
         st.latex(r'''Y_{\text{pot}}=\ln(y),\quad X_{\text{pot}}=\ln(x), \quad \text{y}\quad A_{\text{pot}}=\ln(a)''')
         st.write('Parámetros:')
         st.latex(r'''n='''+ rf'''{n:.4f}''')
-        st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''' + r'''\quad \Rightarrow \quad a=''' + rf'''{a:.4f}''')
+        st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''' + r'''\quad \Rightarrow \quad a=''' + rf'''{a:.6f}''')
 
         st.write(f"Modelo de regresión potencia: $$y = {a:.4f}x^{{{n:.4f}}}$$")
 
