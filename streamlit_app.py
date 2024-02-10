@@ -357,7 +357,7 @@ with tabs[1]:
         st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''' + r'''\quad \Rightarrow \quad a=''' + rf'''{a:.6f}''')
 
         st.write(f"Modelo de regresión potencia: $$y = {a:.6f}x^{{{n:.4f}}}$$")
-        log_y_predict = model_exponential.predict(log_X.values.reshape(-1,1))
+        log_y_predict = model_potential.predict(log_X.values.reshape(-1,1))
         R2 = r2_score(log_y,log_y_predict)
         st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
 
