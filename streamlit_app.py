@@ -10,7 +10,7 @@ from sklearn.linear_model import LinearRegression
 st.title('Modelos de regresión')
 st.markdown('*Autor: Gabriel Barragán*')
 
-tab_titles = ['Regresión lineal','Regresión exponencial','Otros']
+tab_titles = ['Regresión lineal','Regresión exponencial','Regresión logística','Regresión logarítmica']
 tabs = st.tabs(tab_titles)
 
 widget_id = (id for id in range(1, 100_00))
@@ -181,7 +181,6 @@ with tabs[1]:
   # Load Data
   # Create a list of datasets
   datasets_2 = ["Poblacion_Estados_Unidos",
-               "crecimiento_logistico",
                "emisiones_escapes_autos",
                "Especie_area",
                "Experimentos_curva_olvido",
@@ -323,7 +322,7 @@ with tabs[1]:
         st.latex(r'''k='''+ rf'''{k:.4f}''')
         st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
 
-        st.write(f"$$y = {C:.4f}x^{{{k:.4f}}}$$")
+        st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}x^{{{k:.4f}}}$$")
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión exponencial')
@@ -349,7 +348,7 @@ with tabs[1]:
         st.latex(r'''n='''+ rf'''{n:.4f}''')
         st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''')
 
-        st.write(f"$$y = {a:.4f}x^{{{n:.4f}}}$$")
+        st.write(f"Modelo de regresión potencia: $$y = {a:.4f}x^{{{n:.4f}}}$$")
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión potencia')
@@ -357,3 +356,15 @@ with tabs[1]:
         input_value = st.number_input(f'Introduce un valor de X', value=X.min())
         predicted_value = model_exponential.predict([[np.log(input_value)]])
         st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(predicted_value[0]):.2f}')
+
+with tabs[2]:
+  st.write('# Cargar base de datos')
+  df_3 = pd.read_csv('Datasets/crecimiento_logistico.csv')
+
+  # Display the Dataframe
+  if st.checkbox('Mostrar base de datos', key=next(widget_id)):
+    st.write('Base de datos: crecimiento_logistico')
+    st.dataframe(df_3)
+
+  if st.checkbox('Mostrar estadísticos descriptivos', key=next(widget_id)):
+      st.write(df_3.describe())
