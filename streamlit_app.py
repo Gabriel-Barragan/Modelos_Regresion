@@ -268,9 +268,9 @@ with tabs[1]:
         st.latex(r'''Y_{\text{exp}}=\ln(y),\quad \text{y}\quad A_{\text{exp}}=\ln(C)''')
         st.write('Parámetros:')
         st.latex(r'''k='''+ rf'''{k:.4f}''')
-        st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''')
+        st.latex(r'''A_{\text{exp}}=\ln(C)=''' + rf'''{log_C:.4f}''' + r'''\quad \Rightarrow \quad C=''' + rf'''{C:.4f}''')
 
-        st.write(f"$$y = {C:.4f}x^{{{k:.4f}}}$$")
+        st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}x^{{{k:.4f}}}$$")
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión exponencial')
