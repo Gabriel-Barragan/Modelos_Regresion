@@ -325,7 +325,7 @@ with tabs[1]:
         st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''' + r'''\quad \Rightarrow \quad C=''' + rf'''{C:.4f}''')
 
         st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}x^{{{k:.4f}}}$$")
-        #st.latex(r'''R^2='''+rf''' r2_score(X, log_y)''')
+        st.write(f'Coeficiente de determinación: $$R^2={r2_score(X, log_y):.4f}$$')
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión exponencial')
@@ -352,6 +352,7 @@ with tabs[1]:
         st.latex(r'''A_{\text{pot}}=\ln(a)='''+ rf'''{log_a:.4f}''' + r'''\quad \Rightarrow \quad a=''' + rf'''{a:.6f}''')
 
         st.write(f"Modelo de regresión potencia: $$y = {a:.6f}x^{{{n:.4f}}}$$")
+        st.write(f'Coeficiente de determinación: $$R^2={r2_score(log_X, log_y):.4f}$$')
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión potencia')
