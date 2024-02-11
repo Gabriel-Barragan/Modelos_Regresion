@@ -190,7 +190,6 @@ with tabs[1]:
                "Ley_Beer_Lambert",
                "modelo_exponencial_o_potencia_1",
                "modelo_exponencial_o_potencia_2",
-               "modelo_logaritmico",
                "Pelota_caida",
                "Vida_media"]
 
@@ -463,8 +462,8 @@ with tabs[2]:
     plt.title('Diagrama de dispersión y curva de regresión logística')   
     plt.scatter(df_3['Tiempo_dias'], df_3['Numero_moscas'])
     plt.plot(x_pred, y_pred, color='red')
-    plt.xlabel(df_3['Tiempo_dias'].name)
-    plt.ylabel(df_3['Numero_moscas'].name)
+    plt.xlabel('Tiempo_dias')
+    plt.ylabel('Numero_moscas')
     # Display the plot in Streamlit
     st.pyplot(plt)
 
@@ -475,3 +474,24 @@ with tabs[2]:
     predicted_value = logistic_function(input_value, C, a, r)
     st.write(f'En {input_value} días habrán {predicted_value:.2f} moscas')
 
+with tabs[3]: #
+  st.write('# Cargar base de datos')
+  df_4 = pd.read_csv('Datasets/modelo_logaritmico.csv')
+
+  # Display the Dataframe
+  if st.checkbox('Mostrar base de datos', key=next(widget_id)):
+    st.write('Base de datos: modelo_logaritmico')
+    st.dataframe(df_4)
+
+  if st.checkbox('Mostrar estadísticos descriptivos', key=next(widget_id)):
+    st.write(df_4.describe())
+
+  if st.checkbox('Diagrama de dispersión', key=next(widget_id)):
+    st.write('# Diagrama de dispersión')
+    plt.subplots()
+    plt.title('Diagrama de dispersión - modelo logarítmico')
+    plt.scatter(df_4['Anio'],df_4['Toneladas_metricas_carbon'])
+    plt.xlabel('Anio')
+    plt.ylabel('Toneladas_metricas_carbon')
+    # Display the plot in Streamlit
+    st.pyplot(plt)
