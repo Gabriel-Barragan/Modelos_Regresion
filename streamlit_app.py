@@ -430,8 +430,8 @@ with tabs[2]:
     plt.subplots()
     plt.title('Diagrama de dispersión')
     plt.scatter(df_3.iloc[:,0],df_3.iloc[:,1])
-    #plt.xlabel(X.name)
-    #plt.ylabel(y.name)
+    plt.xlabel(df_3['Tiempo_dias'])
+    plt.ylabel(df_3['Numero_moscas'])
     # Display the plot in Streamlit
     st.pyplot(plt)
     
