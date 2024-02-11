@@ -448,6 +448,7 @@ with tabs[2]:
     r = popt[2]
     st.write(f"Parámetros: C= {C:.2f}, a= {a:.2f}, r= {r:.2f}")
 
+    st.write(f"Modelo de regresión potencia: $$y = \frac{1}{2}{a:.6f}x^{{{n:.4f}}}$$")
     #st.write(f"Modelo de crecimiento logístico: $$y = \frac{C}{1+e^{{{r:.4f}}}}$$")
     #st.write(f"Modelo de crecimiento logístico: $$y =\frac{C}{1 + a e^{{rt}}} = \frac{{C:.4f}}{1+a e^{{{r:.4f}t}}}$$")
 
