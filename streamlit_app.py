@@ -279,7 +279,7 @@ with tabs[1]:
         x_min = st.number_input('Valor mínimo x:',value=X.min())
         x_max = st.number_input('Valor máximo x:',value=X.max()) 
         x_range_prediction = np.arange(x_min, x_max,1)
-        y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
+        y_range_prediction = model_exponential.predict(x_range_prediction.reshape(-1,1))
          
         plt.subplots()
         plt.title('Diagrama de dispersión y curva de regresión exponencial')
