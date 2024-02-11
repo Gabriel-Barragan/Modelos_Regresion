@@ -514,6 +514,20 @@ with tabs[3]: #
     R2 = r2_score(y,y_predict)
     st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
 
+    x_min = st.number_input('Valor mínimo x:',value=X.min(), key=next(widget_id))
+    x_max = st.number_input('Valor máximo x:',value=X.max(), key=next(widget_id)) 
+    log_x_range_prediction = np.arange(np.log(x_min), np.log(x_max),0.01)
+    y_range_prediction = model_potential.predict(log_x_range_prediction.reshape(-1,1))
+         
+    plt.subplots()
+    plt.title('Diagrama de dispersión y curva de regresión logarítmica')
+    plt.scatter(X, y)
+    plt.plot(np.exp(log_x_range_prediction), y_range_prediction, color='red')
+    plt.xlabel(X.name)
+    plt.ylabel(y.name)
+    # Display the plot in Streamlit
+    st.pyplot(plt)
+    
     # Predict a new value
     st.write('# Predicción de valores con el modelo de regresión logarítmica')
     st.write('X: Anio')
