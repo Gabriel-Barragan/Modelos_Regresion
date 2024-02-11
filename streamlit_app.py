@@ -221,15 +221,15 @@ with tabs[1]:
   if selected_columns:
     filtered_data = df_2[selected_columns]
     st.dataframe(filtered_data.head())
-    
-    X = filtered_data.iloc[:,0]
-    y = filtered_data.iloc[:,1]
-    log_y = np.log(y)
 
     if st.checkbox('Mostrar estadísticos descriptivos', key=next(widget_id)):
       st.write(filtered_data.describe())
       #correlation_coef = X.corr(y)
       #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
+
+    X = filtered_data.iloc[:,0]
+    y = filtered_data.iloc[:,1]
+    log_y = np.log(y)
     
     if X.name == 'Anio':
       X_min = X.min()
