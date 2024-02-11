@@ -450,7 +450,7 @@ with tabs[2]:
     x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
     x_max = st.number_input('Valor máximo x:',value=df_3['Tiempo_dias'].max(), key=next(widget_id)) 
     # Generate predictions
-    x_pred = np.linspace(x_min, x_max, 100)  # Time points for prediction
+    x_pred = np.linspace(x_min, x_max, 1000)  # Time points for prediction
     y_pred = logistic_function(x_pred, L, k, x0)
          
     plt.subplots()
