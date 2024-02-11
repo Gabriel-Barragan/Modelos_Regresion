@@ -279,12 +279,12 @@ with tabs[1]:
         x_min = st.number_input('Valor mínimo x:',value=X.min())
         x_max = st.number_input('Valor máximo x:',value=X.max()) 
         x_range_prediction = np.arange(x_min, x_max,1)
-        y_range_prediction = model_exponential.predict(x_range_prediction.reshape(-1,1))
+        log_y_range_prediction = model_exponential.predict(x_range_prediction.reshape(-1,1))
          
         plt.subplots()
         plt.title('Diagrama de dispersión y curva de regresión exponencial')
         plt.scatter(X, y)
-        plt.plot(x_range_prediction, np.exp(y_range_prediction), color='red')
+        plt.plot(x_range_prediction, np.exp(log_y_range_prediction), color='red')
         plt.xlabel(X.name)
         plt.ylabel(y.name)
         # Display the plot in Streamlit
@@ -294,8 +294,8 @@ with tabs[1]:
         st.write('# Predicción de valores con el modelo de regresión exponencial')
         st.write('x: ',X.name)
         input_value = st.number_input(f'Introduce número de años después o antes de {X_min}', value=X.min(), key=next(widget_id))
-        predicted_value = model_exponential.predict([[input_value]])
-        st.write(f'En el año {X_min+input_value}, se tiene que {y.name} es {np.exp(predicted_value[0]):.2f}')
+        log_predicted_value = model_exponential.predict([[input_value]])
+        st.write(f'En el año {X_min+input_value}, se tiene que {y.name} es {np.exp(log_predicted_value[0]):.2f}')
       
     else:
       X = filtered_data.iloc[:,0]
@@ -352,12 +352,12 @@ with tabs[1]:
         x_min = st.number_input('Valor mínimo x:',value=X.min())
         x_max = st.number_input('Valor máximo x:',value=X.max()) 
         x_range_prediction = np.arange(x_min, x_max,1)
-        y_range_prediction = model_exponential.predict(x_range_prediction.reshape(-1,1))
+        log_y_range_prediction = model_exponential.predict(x_range_prediction.reshape(-1,1))
          
         plt.subplots()
         plt.title('Diagrama de dispersión y curva de regresión exponencial')
         plt.scatter(X, y)
-        plt.plot(x_range_prediction, np.exp(y_range_prediction), color='red')
+        plt.plot(x_range_prediction, np.exp(log_y_range_prediction), color='red')
         plt.xlabel(X.name)
         plt.ylabel(y.name)
         # Display the plot in Streamlit
@@ -367,8 +367,8 @@ with tabs[1]:
         st.write('# Predicción de valores con el modelo de regresión exponencial')
         st.write('x: ',X.name)
         input_value = st.number_input(f'Introduce un valor de X', value=X.min(), key=next(widget_id))
-        predicted_value = model_exponential.predict([[input_value]])
-        st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(predicted_value[0]):.2f}')
+        log_predicted_value = model_exponential.predict([[input_value]])
+        st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(log_predicted_value[0]):.2f}')
       
       if st.checkbox('Mostrar modelo de regresión potencia', key=next(widget_id)):
         model_potential = LinearRegression()
@@ -394,7 +394,7 @@ with tabs[1]:
 
         x_min = st.number_input('Valor mínimo x:',value=X.min(), key=next(widget_id))
         x_max = st.number_input('Valor máximo x:',value=X.max(), key=next(widget_id)) 
-        log_x_range_prediction = np.arange(np.log(x_min), np.log(x_max),1)
+        log_x_range_prediction = np.arange(np.log(x_min), np.log(x_max),0.01)
         log_y_range_prediction = model_potential.predict(log_x_range_prediction.reshape(-1,1))
          
         plt.subplots()
@@ -410,8 +410,8 @@ with tabs[1]:
         st.write('# Predicción de valores con el modelo de regresión potencia')
         st.write('x: ',X.name)
         input_value = st.number_input(f'Introduce un valor de X', value=X.min(), key=next(widget_id))
-        predicted_value = model_exponential.predict([[np.log(input_value)]])
-        st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(predicted_value[0]):.2f}')
+        log_predicted_value = model_exponential.predict([[np.log(input_value)]])
+        st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(log_predicted_value[0]):.2f}')
 
 with tabs[2]:
   st.write('# Cargar base de datos')
