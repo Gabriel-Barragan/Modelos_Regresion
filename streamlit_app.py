@@ -513,4 +513,10 @@ with tabs[3]: #
     y_predict = model_logarithmic.predict(log_X.values.reshape(-1,1))
     R2 = r2_score(y,y_predict)
     st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
-    
+
+    # Predict a new value
+    st.write('# Predicción de valores con el modelo de regresión logarítmica')
+    st.write('X: Anio')
+    input_value = st.number_input(f'Introduce un valor de X', value=X.min(), key=next(widget_id))
+    predicted_value = model_logarithmic.predict([[np.log(input_value)]])
+    st.write(f'En el año {input_value}, se predice una producción de {predicted_value[0]:.2f} toneladas métricas de carbono en una pequeña mina en el norte de la Columbia Británica')
