@@ -446,10 +446,12 @@ with tabs[2]:
     C = popt[0]
     a = popt[1]
     r = popt[2]
-    st.write(f"Parámetros: C= {C:.2f}, a= {a:.2f}, r= {r:.2f}")
 
     st.write("Modelo de crecimiento logístico:")
     st.latex(r'''y =\frac{C}{1 + a e^{rt}} = \frac{%.4f}{1+%.4f e^{%.4f t}}'''% (C, a, r))
+    y_predict = logistic_function(df_3['Tiempo_dias'])
+    R2 = r2_score(df_3['Numero_moscas'], y_predict)
+    st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
 
     x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
     x_max = st.number_input('Valor máximo x:',value=df_3['Tiempo_dias'].max(), key=next(widget_id)) 
