@@ -426,7 +426,7 @@ with tabs[2]:
     st.write(df_3.describe())
 
   if st.checkbox('Diagrama de dispersión', key=next(widget_id)):
-    st.write('# Diagrama de dispersión')
+    st.write('# Diagrama de dispersión - crecimiento_logistico')
     plt.subplots()
     plt.title('Diagrama de dispersión')
     plt.scatter(df_3.iloc[:,0],df_3.iloc[:,1])
