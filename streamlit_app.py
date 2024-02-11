@@ -227,7 +227,7 @@ with tabs[1]:
       #correlation_coef = X.corr(y)
       #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
     
-    if 'Anio' in filtered_data.tolist():
+    if 'Anio' in filtered_data.columns.tolist():
       X = filtered_data.iloc[:,0]
       y = filtered_data.iloc[:,1]
       log_y = np.log(y)
