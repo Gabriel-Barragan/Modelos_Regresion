@@ -392,8 +392,8 @@ with tabs[1]:
         R2 = r2_score(log_y,log_y_predict)
         st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
 
-        x_min = st.number_input('Valor mínimo x:',value=X.min())
-        x_max = st.number_input('Valor máximo x:',value=X.max()) 
+        x_min = st.number_input('Valor mínimo x:',value=X.min(), key=next(widget_id))
+        x_max = st.number_input('Valor máximo x:',value=X.max(), key=next(widget_id)) 
         log_x_range_prediction = np.arange(np.log(x_min), np.log(x_max),1)
         log_y_range_prediction = model_potential.predict(log_x_range_prediction.reshape(-1,1))
          
