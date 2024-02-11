@@ -5,8 +5,8 @@ import streamlit as st
 import scipy.stats as stats
 import seaborn as sns
 
+from scipy.optimize import curve_fit
 from sklearn.linear_model import LinearRegression
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import r2_score
 
 st.title('Modelos de regresión')
@@ -437,17 +437,26 @@ with tabs[2]:
     st.pyplot(plt)
     
   if st.checkbox('Mostrar modelo de regresión logística', key=next(widget_id)):
-    model_logistic = LogisticRegression()
-    model_logistic.fit(df_3['Tiempo_dias'].values.reshape(-1,1), df_3['Numero_moscas'])
+    # Define logistic function
+    def logistic_function(x, L, k, x0):
+      return L / (1 + np.exp(-k * (x - x0)))
+
+    # Fit logistic function to the data
+    popt, _ = curve_fit(logistic_function, df_3['Tiempo_dias'], df_3['Numero_moscas'], maxfev=1000)
+
+    # Extract parameters
+    L, k, x0 = popt
+    
     x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
     x_max = st.number_input('Valor máximo x:',value=df_3['Tiempo_dias'].max(), key=next(widget_id)) 
-    x_range_prediction = np.arange(x_min, x_max, 20)
-    y_range_prediction = model_logistic.predict(x_range_prediction.reshape(-1,1))
+    # Generate predictions
+    x_pred = np.linspace(x_min, x_max, 100)  # Time points for prediction
+    y_pred = logistic_function(x_pred, L, k, x0)
          
     plt.subplots()
-    plt.title('Diagrama de dispersión y curva de regresión logística')
+    plt.title('Diagrama de dispersión y curva de regresión logística')   
     plt.scatter(df_3['Tiempo_dias'], df_3['Numero_moscas'])
-    plt.plot(x_range_prediction, y_range_prediction, color='red')
+    plt.plot(x_pred, y_pred, color='red')
     plt.xlabel(df_3['Tiempo_dias'].name)
     plt.ylabel(df_3['Numero_moscas'].name)
     # Display the plot in Streamlit
