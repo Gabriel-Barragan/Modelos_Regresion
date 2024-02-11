@@ -442,7 +442,7 @@ with tabs[2]:
       return  (C / (1 + a*np.exp(r*t)))
 
     # fitting
-    popt, _ = curve_fit(logistic_function, df_3['Tiempo_dias'], df_3['Numero_moscas'], p0=[df_3.max(), 1, 1], maxfev=1000)
+    popt, _ = curve_fit(logistic_function, df_3['Tiempo_dias'], df_3['Numero_moscas'], p0=[df_3['Numero_moscas'].max(), 1, 1], maxfev=1000)
     C = popt[0]
     a = popt[1]
     r = popt[2]
