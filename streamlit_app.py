@@ -423,4 +423,15 @@ with tabs[2]:
     st.dataframe(df_3)
 
   if st.checkbox('Mostrar estadísticos descriptivos', key=next(widget_id)):
-      st.write(df_3.describe())
+    st.write(df_3.describe())
+
+  if st.checkbox('Diagrama de dispersión', key=next(widget_id)):
+    st.write('# Diagrama de dispersión')
+    plt.subplots()
+    plt.title('Diagrama de dispersión')
+    plt.scatter(df_3.iloc[:,0],df_3.iloc[:,1])
+    #plt.xlabel(X.name)
+    #plt.ylabel(y.name)
+    # Display the plot in Streamlit
+    st.pyplot(plt)
+    
