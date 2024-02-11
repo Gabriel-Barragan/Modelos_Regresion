@@ -275,6 +275,20 @@ with tabs[1]:
         log_y_predict = model_exponential.predict(X.values.reshape(-1,1))
         R2 = r2_score(log_y,log_y_predict)
         st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
+
+        x_min = st.number_input('Valor mínimo x:',value=X.min())
+        x_max = st.number_input('Valor máximo x:',value=X.max()) 
+        x_range_prediction = np.arange(x_min, x_max,1)
+        y_range_prediction = model.predict(x_range_prediction.reshape(-1,1))
+         
+        plt.subplots()
+        plt.title('Diagrama de dispersión y curva de regresión exponencial')
+        plt.scatter(X, y)
+        plt.plot(x_range_prediction, np.exp(y_range_prediction), color='red')
+        plt.xlabel(X.name)
+        plt.ylabel(y.name)
+        # Display the plot in Streamlit
+        st.pyplot(plt)
         
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión exponencial')
