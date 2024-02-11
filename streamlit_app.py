@@ -448,7 +448,7 @@ with tabs[2]:
     r = popt[2]
     st.write(f"Parámetros: C= {C:.2f}, a= {a:.2f}, r= {r:.2f}")
 
-    st.write("Modelo de crecimiento logístico:}
+    st.write("Modelo de crecimiento logístico:")
     st.latex(r'''y =\frac{C}{1 + a e^{rt}} = \frac{%.4f}{1+%.4f e^{%.4f t}}'''% (C, a, r))
 
     x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
