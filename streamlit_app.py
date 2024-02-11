@@ -442,7 +442,7 @@ with tabs[2]:
       return L / (1 + np.exp(-k * (x - x0)))
 
     # Fit logistic function to the data
-    popt, _ = curve_fit(logistic_function, df_3['Tiempo_dias'], df_3['Numero_moscas'], maxfev=1000)
+    popt, _ = curve_fit(logistic_function, df_3['Tiempo_dias'], df_3['Numero_moscas'], maxfev=10000)
 
     # Extract parameters
     L, k, x0 = popt
@@ -450,7 +450,7 @@ with tabs[2]:
     x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
     x_max = st.number_input('Valor máximo x:',value=df_3['Tiempo_dias'].max(), key=next(widget_id)) 
     # Generate predictions
-    x_pred = np.linspace(x_min, x_max, 1000)  # Time points for prediction
+    x_pred = np.linspace(x_min, x_max, 100)  # Time points for prediction
     y_pred = logistic_function(x_pred, L, k, x0)
          
     plt.subplots()
