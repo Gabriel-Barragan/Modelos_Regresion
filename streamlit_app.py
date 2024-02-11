@@ -449,7 +449,7 @@ with tabs[2]:
 
     st.write("Modelo de crecimiento logístico:")
     st.latex(r'''y =\frac{C}{1 + a e^{rt}} = \frac{%.4f}{1+%.4f e^{%.4f t}}'''% (C, a, r))
-    y_predict = logistic_function(df_3['Tiempo_dias'])
+    y_predict = logistic_function(df_3['Tiempo_dias'], C, a, r)
     R2 = r2_score(df_3['Numero_moscas'], y_predict)
     st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
 
