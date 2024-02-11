@@ -439,26 +439,14 @@ with tabs[2]:
   if st.checkbox('Mostrar modelo de regresión logística', key=next(widget_id)):
     # Define logistic function
     def logistic_function(t, C, a, r):
-      return  (C / (1 + a*np.exp(-r*t)))
+      return  (C / (1 + a*np.exp(r*t)))
 
     # fitting
     popt, _ = curve_fit(logistic_function, df_3['Tiempo_dias'], df_3['Numero_moscas'], p0=[df_3.max(), 1, 1], maxfev=1000)
     C = popt[0]
     a = popt[1]
     r = popt[2]
+    st.write(f"Parámetros: C= {C:.2f}, a= {a:.2f}, r= {r:.2f}")
     #st.write(f"Modelo de crecimiento logístico: $$y =\frac{C}{1 + a e^{{rt}}} = \frac{{C:.4f}}{1+a e^{{{r:.4f}t}}}$$")
         
-    x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
-    x_max = st.number_input('Valor máximo x:',value=df_3['Tiempo_dias'].max(), key=next(widget_id)) 
-    # Generate predictions
-    x_pred = np.linspace(x_min, x_max, 100)  # Time points for prediction
-    y_pred = logistic_function(x_pred, C, a, r)
-         
-    plt.subplots()
-    plt.title('Diagrama de dispersión y curva de regresión logística')   
-    plt.scatter(df_3['Tiempo_dias'], df_3['Numero_moscas'])
-    plt.plot(x_pred, y_pred, color='red')
-    plt.xlabel(df_3['Tiempo_dias'].name)
-    plt.ylabel(df_3['Numero_moscas'].name)
-    # Display the plot in Streamlit
-    st.pyplot(plt)
+
