@@ -469,9 +469,9 @@ with tabs[2]:
     st.pyplot(plt)
 
     # Predict a new value
-    st.write('# Predicción de valores con el modelo de regresión potencia')
+    st.write('# Predicción de valores con el modelo de función logística')
     st.write('x: ',df_3['Tiempo_dias'].name)
-    input_value = st.number_input(f'Introduce un valor de X', value=df_3['Tiempo_dias'].min(), step=0.1, key=next(widget_id))
+    input_value = st.number_input(f'Introduce un valor de X', value=df_3['Tiempo_dias'].min(), key=next(widget_id))
     predicted_value = logistic_function(input_value, C, a, r)
     st.write(f'En {input_value} días habrán {predicted_value:.2f} moscas')
 
