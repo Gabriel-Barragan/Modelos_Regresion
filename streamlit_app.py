@@ -509,4 +509,8 @@ with tabs[3]: #
 
     st.write("Modelo logarítmico:")
     st.latex(r'''y = a +b \ln x = %.4f + %.4f \ln x'''% (a, b))
+
+    y_predict = model_logarithmic.predict(log_X.values.reshape(-1,1))
+    R2 = r2_score(y,y_predict)
+    st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
     
