@@ -398,7 +398,7 @@ with tabs[1]:
         log_y_range_prediction = model_potential.predict(log_x_range_prediction.reshape(-1,1))
          
         plt.subplots()
-        plt.title('Diagrama de dispersión y curva de regresión exponencial')
+        plt.title('Diagrama de dispersión y curva de regresión potencia')
         plt.scatter(X, y)
         plt.plot(np.exp(log_x_range_prediction), np.exp(log_y_range_prediction), color='red')
         plt.xlabel(X.name)
@@ -410,7 +410,7 @@ with tabs[1]:
         st.write('# Predicción de valores con el modelo de regresión potencia')
         st.write('x: ',X.name)
         input_value = st.number_input(f'Introduce un valor de X', value=X.min(), key=next(widget_id))
-        log_predicted_value = model_exponential.predict([[np.log(input_value)]])
+        log_predicted_value = model_potential.predict([[np.log(input_value)]])
         st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(log_predicted_value[0]):.2f}')
 
 with tabs[2]:
