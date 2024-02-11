@@ -271,7 +271,7 @@ with tabs[1]:
         st.latex(r'''k='''+ rf'''{k:.4f}''')
         st.latex(r'''A_{\text{exp}}=\ln(C)=''' + rf'''{log_C:.4f}''' + r'''\quad \Rightarrow \quad C=''' + rf'''{C:.4f}''')
 
-        st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}x^{{{k:.4f}}}$$")
+        st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}e^{{{k:.4f}x}}$$")
 
         log_y_predict = model_exponential.predict(X.values.reshape(-1,1))
         R2 = r2_score(log_y,log_y_predict)
@@ -345,7 +345,7 @@ with tabs[1]:
         st.latex(r'''k='''+ rf'''{k:.4f}''')
         st.latex(r'''A_{\text{exp}}=\ln(C)='''+ rf'''{log_C:.4f}''' + r'''\quad \Rightarrow \quad C=''' + rf'''{C:.4f}''')
 
-        st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}x^{{{k:.4f}}}$$")
+        st.write(f"Modelo de regresión exponencial: $$y = {C:.4f}e^{{{k:.4f}x}}$$")
         log_y_predict = model_exponential.predict(X.values.reshape(-1,1))
         R2 = r2_score(log_y,log_y_predict)
         st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
@@ -447,6 +447,8 @@ with tabs[2]:
     a = popt[1]
     r = popt[2]
     st.write(f"Parámetros: C= {C:.2f}, a= {a:.2f}, r= {r:.2f}")
+
+    st.write(f"Modelo de crecimiento logístico: $$y = \frac{C}{1+e^{{{r:.4f}}}}$$")
     #st.write(f"Modelo de crecimiento logístico: $$y =\frac{C}{1 + a e^{{rt}}} = \frac{{C:.4f}}{1+a e^{{{r:.4f}t}}}$$")
 
     x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
