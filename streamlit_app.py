@@ -516,7 +516,7 @@ with tabs[3]: #
 
     x_min = st.number_input('Valor mínimo x:',value=X.min(), key=next(widget_id))
     x_max = st.number_input('Valor máximo x:',value=X.max(), key=next(widget_id)) 
-    log_x_range_prediction = np.arange(np.log(x_min), np.log(x_max),0.1)
+    log_x_range_prediction = np.arange(np.log(x_min), np.log(x_max),0.001)
     y_range_prediction = model_logarithmic.predict(log_x_range_prediction.reshape(-1,1))
          
     plt.subplots()
