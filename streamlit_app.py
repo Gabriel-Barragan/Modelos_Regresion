@@ -226,12 +226,12 @@ with tabs[1]:
       st.write(filtered_data.describe())
       #correlation_coef = X.corr(y)
       #st.write(f'Coeficiente de correlación entre la variable {X.name} y {y.name}: R = {correlation_coef:.2f}')
-
-    X = filtered_data.iloc[:,0]
-    y = filtered_data.iloc[:,1]
-    log_y = np.log(y)
     
-    if X.name == 'Anio':
+    if 'Anio' in filtered_data.tolist():
+      X = filtered_data.iloc[:,0]
+      y = filtered_data.iloc[:,1]
+      log_y = np.log(y)
+      
       X_min = X.min()
       X = X - X_min
 
@@ -298,6 +298,9 @@ with tabs[1]:
         st.write(f'En el año {X_min+input_value}, se tiene que {y.name} es {np.exp(predicted_value[0]):.2f}')
       
     else:
+      X = filtered_data.iloc[:,0]
+      y = filtered_data.iloc[:,1]
+      log_y = np.log(y)
       log_X = np.log(X)   
       
       if st.checkbox('Diagramas de dispersión', key=next(widget_id)):
@@ -346,6 +349,20 @@ with tabs[1]:
         R2 = r2_score(log_y,log_y_predict)
         st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
 
+        x_min = st.number_input('Valor mínimo x:',value=X.min())
+        x_max = st.number_input('Valor máximo x:',value=X.max()) 
+        x_range_prediction = np.arange(x_min, x_max,1)
+        y_range_prediction = model_exponential.predict(x_range_prediction.reshape(-1,1))
+         
+        plt.subplots()
+        plt.title('Diagrama de dispersión y curva de regresión exponencial')
+        plt.scatter(X, y)
+        plt.plot(x_range_prediction, np.exp(y_range_prediction), color='red')
+        plt.xlabel(X.name)
+        plt.ylabel(y.name)
+        # Display the plot in Streamlit
+        st.pyplot(plt)
+        
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión exponencial')
         st.write('x: ',X.name)
@@ -374,6 +391,20 @@ with tabs[1]:
         log_y_predict = model_potential.predict(log_X.values.reshape(-1,1))
         R2 = r2_score(log_y,log_y_predict)
         st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
+
+        x_min = st.number_input('Valor mínimo x:',value=X.min())
+        x_max = st.number_input('Valor máximo x:',value=X.max()) 
+        log_x_range_prediction = np.arange(np.log(x_min), np.log(x_max),1)
+        log_y_range_prediction = model_potential.predict(log_x_range_prediction.reshape(-1,1))
+         
+        plt.subplots()
+        plt.title('Diagrama de dispersión y curva de regresión exponencial')
+        plt.scatter(X, y)
+        plt.plot(np.exp(log_x_range_prediction), np.exp(log_y_range_prediction), color='red')
+        plt.xlabel(X.name)
+        plt.ylabel(y.name)
+        # Display the plot in Streamlit
+        st.pyplot(plt)
 
         # Predict a new value
         st.write('# Predicción de valores con el modelo de regresión potencia')
