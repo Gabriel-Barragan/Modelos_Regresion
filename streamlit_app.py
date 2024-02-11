@@ -446,7 +446,7 @@ with tabs[2]:
          
     plt.subplots()
     plt.title('Diagrama de dispersión y curva de regresión logística')
-    plt.scatter(X, y)
+    plt.scatter(df_3['Tiempo_dias'], df_3['Numero_moscas'])
     plt.plot(x_range_prediction, y_range_prediction, color='red')
     plt.xlabel(df_3['Tiempo_dias'].name)
     plt.ylabel(df_3['Numero_moscas'].name)
