@@ -473,5 +473,5 @@ with tabs[2]:
     st.write('x: ',df_3['Tiempo_dias'].name)
     input_value = st.number_input(f'Introduce un valor de X', value=df_3['Tiempo_dias'].min(), key=next(widget_id))
     predicted_value = logistic_function(input_value, C, a, r)
-    st.write(f'Si {df_3['Tiempo_dias'].name} es {input_value}, entonces {df_3['Numero_moscas'].name} es {predicted_value:.2f}')
+    st.write(f'En {input_value} días habrán {predicted_value:.2f} moscas')
 
