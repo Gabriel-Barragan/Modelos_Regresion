@@ -446,7 +446,7 @@ with tabs[2]:
     C = popt[0]
     a = popt[1]
     r = popt[2]
-    st.write(f"Modelo de crecimiento logístico: $$y =\frac{C}{1 + a e^{rt}} = \frac{{C:.4f}}{1+a e^{{-{r:.4f}t}}}$$")
+    st.write(f"Modelo de crecimiento logístico: $$y =\frac{C}{1 + a e^{{rt}}} = \frac{{C:.4f}}{1+a e^{{{r:.4f}t}}}$$")
         
     x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
     x_max = st.number_input('Valor máximo x:',value=df_3['Tiempo_dias'].max(), key=next(widget_id)) 
