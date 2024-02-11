@@ -441,7 +441,7 @@ with tabs[2]:
     model_logistic.fit(df_3['Tiempo_dias'].values.reshape(-1,1), df_3['Numero_moscas'])
     x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
     x_max = st.number_input('Valor máximo x:',value=df_3['Tiempo_dias'].max(), key=next(widget_id)) 
-    x_range_prediction = np.arange(x_min, x_max, 1)
+    x_range_prediction = np.arange(x_min, x_max, 0.1)
     y_range_prediction = model_logistic.predict(x_range_prediction.reshape(-1,1))
          
     plt.subplots()
