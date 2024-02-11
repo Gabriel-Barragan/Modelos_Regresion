@@ -495,3 +495,18 @@ with tabs[3]: #
     plt.ylabel('Toneladas_metricas_carbon')
     # Display the plot in Streamlit
     st.pyplot(plt)
+
+  if st.checkbox('Modelo logarítmico', key=next(widget_id)):
+    X = df_4['Anio']
+    log_X = np.log(X)
+    y = df_4['Toneladas_metricas_carbon']
+    
+    model_logarithmic = LinearRegression()
+    model_logarithmic.fit(log_X.values.reshape(-1,1), y)
+
+    a = model_logarithmic.intercept_
+    b = model_logarithmic.coef_[0]
+
+    st.write("Modelo logarítmico:")
+    st.latex(r'''y = a +b \ln x = %.4f + %.4f \ln x'''% (a, b))
+    
