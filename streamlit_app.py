@@ -6,6 +6,7 @@ import scipy.stats as stats
 import seaborn as sns
 
 from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import r2_score
 
 st.title('Modelos de regresión')
@@ -434,4 +435,22 @@ with tabs[2]:
     plt.ylabel(df_3['Numero_moscas'].name)
     # Display the plot in Streamlit
     st.pyplot(plt)
+    
+  if st.checkbox('Mostrar modelo de regresión logística', key=next(widget_id)):
+    model_logistic = LogisticRegression()
+    model_logistic.fit(df_3['Tiempo_dias'].values.reshape(-1,1), df_3['Numero_moscas'])
+    x_min = st.number_input('Valor mínimo x:',value=df_3['Tiempo_dias'].min(), key=next(widget_id))
+    x_max = st.number_input('Valor máximo x:',value=df_3['Tiempo_dias'].max(), key=next(widget_id)) 
+    x_range_prediction = np.arange(x_min, x_max, 1)
+    y_range_prediction = model_logistic.predict(x_range_prediction.reshape(-1,1))
+         
+    plt.subplots()
+    plt.title('Diagrama de dispersión y curva de regresión logística')
+    plt.scatter(X, y)
+    plt.plot(x_range_prediction, y_range_prediction, color='red')
+    plt.xlabel(df_3['Tiempo_dias'].name)
+    plt.ylabel(df_3['Numero_moscas'].name)
+    # Display the plot in Streamlit
+    st.pyplot(plt)
+
     
