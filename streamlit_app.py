@@ -12,7 +12,7 @@ from sklearn.metrics import r2_score
 st.title('Modelos de regresión')
 st.markdown('*Autor: Gabriel Barragán*')
 
-tab_titles = ['Regresión lineal','Regresión exponencial','Regresión logística','Regresión logarítmica']
+tab_titles = ['Regresión lineal','Regresión polinomial','Regresión exponencial','Regresión logística','Regresión logarítmica']
 tabs = st.tabs(tab_titles)
 
 widget_id = (id for id in range(1, 100_00))
@@ -180,6 +180,8 @@ with tabs[0]:
         st.pyplot(plt)
 
 with tabs[1]:
+
+with tabs[2]:
   # Load Data
   # Create a list of datasets
   datasets_2 = ["Poblacion_Estados_Unidos",
@@ -413,7 +415,7 @@ with tabs[1]:
         log_predicted_value = model_potential.predict([[np.log(input_value)]])
         st.write(f'Si {X.name} es {input_value}, entonces {y.name} es {np.exp(log_predicted_value[0]):.2f}')
 
-with tabs[2]:
+with tabs[3]:
   st.write('# Cargar base de datos')
   df_3 = pd.read_csv('Datasets/crecimiento_logistico.csv')
 
@@ -474,7 +476,7 @@ with tabs[2]:
     predicted_value = logistic_function(input_value, C, a, r)
     st.write(f'En {input_value} días habrán {predicted_value:.2f} moscas')
 
-with tabs[3]: #
+with tabs[4]: #
   st.write('# Cargar base de datos')
   df_4 = pd.read_csv('Datasets/modelo_logaritmico.csv')
 
