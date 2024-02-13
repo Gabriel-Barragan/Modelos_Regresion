@@ -186,7 +186,7 @@ with tabs[1]:
             "Plantas_maiz",
             "rapidez_lista_cosas_favoritas",
             "Ventas_ropas",
-            "Pelota_caida",
+            "Altura_pelota_beisbol",
             "Ley_Torricelli"]
 
   st.write('# Cargar base de datos')
