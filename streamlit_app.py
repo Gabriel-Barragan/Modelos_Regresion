@@ -211,8 +211,8 @@ with tabs[1]:
   X = df_1.iloc[:,0]
   y = df_1.iloc[:,1]
   
-  if st.checkbox('Diagramas de dispersión', key=next(widget_id)):
-    st.write('# Diagramas de dispersión')
+  if st.checkbox('Diagrama de dispersión', key=next(widget_id)):
+    st.write('# Diagrama de dispersión')
     plt.subplots()
     plt.title('Diagrama de dispersión')
     plt.scatter(X,y)
@@ -221,7 +221,10 @@ with tabs[1]:
     # Display the plot in Streamlit
     st.pyplot(plt)
 
-
+  if st.checkbox('Modelo polinomial', key=next(widget_id)):
+    poly_degree = st.number_input('Grado del polinomio', min_value=1)
+    st.write("Modelo polinomial:",poly_degree)
+    #st.latex(r'''y = a +b \ln x = %.4f + %.4f \ln x'''% (a, b))
 
 with tabs[2]:
   # Load Data
