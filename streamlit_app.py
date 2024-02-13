@@ -22,7 +22,7 @@ with tabs[0]:
 
   # Load Data
   # Create a list of datasets
-  datasets_1 = ["1.longitud_femur_estatura",
+  datasets_0 = ["1.longitud_femur_estatura",
               "2.Demanda_bebidas_gaseosas",
               "3.Diametro_arbol",
               "4.Nivel_CO2",
@@ -35,12 +35,12 @@ with tabs[0]:
               ]
 
   # Create a dropdown menu to select the dataset
-  selected_dataset_1 = st.selectbox("Seleccione una base de datos", datasets_1)
+  selected_dataset_0 = st.selectbox("Seleccione una base de datos", datasets_0)
 
   # Read the selected dataset into a pandas Dataframe
-  df = pd.read_csv('Datasets/'+selected_dataset_1+'.csv')
+  df = pd.read_csv('Datasets/'+selected_dataset_0+'.csv')
 
-  if selected_dataset_1 != '11.Record_Olimpico':
+  if selected_dataset_0 != '11.Record_Olimpico':
     # Access X and y variables
     X = df.iloc[:,0]
     if X.name=='Anio':
@@ -52,7 +52,7 @@ with tabs[0]:
 
     # Display the Dataframe
     if st.checkbox('Mostrar base de datos'):
-      st.write('Base de datos: '+selected_dataset_1)
+      st.write('Base de datos: '+selected_dataset_0)
       st.dataframe(df)
 
     if st.checkbox('Mostrar estadísticos descriptivos'):
@@ -136,7 +136,7 @@ with tabs[0]:
     grouped_data = df.groupby('Sexo')
     # Display the Dataframe
     if st.checkbox('Mostrar base de datos'):
-      st.write('Base de datos: '+selected_dataset_1)
+      st.write('Base de datos: '+selected_dataset_0)
       st.dataframe(df)
             
     if st.checkbox('Mostrar estadísticos descriptivos'):
@@ -180,6 +180,7 @@ with tabs[0]:
         st.pyplot(plt)
 
 with tabs[1]:
+  dataset = []
 
 with tabs[2]:
   # Load Data
