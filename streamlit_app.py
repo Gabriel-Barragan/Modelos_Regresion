@@ -202,6 +202,27 @@ with tabs[1]:
     st.write('Base de datos: '+selected_dataset_1)
     st.dataframe(df_1)
 
+  if st.checkbox('Mostrar estadísticos descriptivos', key=next(widget_id)):
+    st.write(df_1.describe())
+
+  X = df_1.iloc[:,0]
+  y = df_1.iloc[:,1]
+  
+  if selected_dataset_1=='Ventas_ropas':
+    X = np.arange(1,12,1)
+
+  if st.checkbox('Diagramas de dispersión', key=next(widget_id)):
+    st.write('# Diagramas de dispersión')
+    plt.subplots()
+    plt.title('Diagrama de dispersión')
+    plt.scatter(X,y)
+    plt.xlabel(X.name)
+    plt.ylabel(y.name)
+    # Display the plot in Streamlit
+    st.pyplot(plt)
+
+
+
 with tabs[2]:
   # Load Data
   # Create a list of datasets
