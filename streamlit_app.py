@@ -209,7 +209,7 @@ with tabs[1]:
   y = df_1.iloc[:,1]
   
   if selected_dataset_1=='Ventas_ropas':
-    X = np.arange(1,12,1)
+    X = np.arange(1,13,1)
 
   if st.checkbox('Diagramas de dispersión', key=next(widget_id)):
     st.write('# Diagramas de dispersión')
