@@ -227,7 +227,7 @@ with tabs[1]:
     st.write("Modelo polinomial:")
     st.latex(r''' y = a_{n}x^{n} + a_{n-1}x^{n-1}+...+a_1x+a_0''')
     for i, coefficient in enumerate(poly_coef):
-      st.latex(rf'''a_{{i:1f}} = {coefficient:.4f}''')
+      st.latex(rf'''a_{i:.0f} = {coefficient:.4f}''')
 
     y_predict = np.polyval(poly_coef, X)
     R2 = r2_score(y, y_predict)
