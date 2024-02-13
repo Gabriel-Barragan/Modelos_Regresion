@@ -11,6 +11,8 @@ from sklearn.metrics import r2_score
 
 st.title('Modelos de regresión')
 st.markdown('*Autor: Gabriel Barragán*')
+email_address = 'gabrielbar@gmail.com'
+st.markdown(f"[Contáctenme](mailto:{email_address})")
 
 tab_titles = ['Regresión lineal','Regresión polinomial','Regresión exponencial','Regresión logística','Regresión logarítmica']
 tabs = st.tabs(tab_titles)
