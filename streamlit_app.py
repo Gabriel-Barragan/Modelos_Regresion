@@ -224,7 +224,7 @@ with tabs[1]:
   if st.checkbox('Modelo polinomial', key=next(widget_id)):
     poly_degree = st.number_input('Grado del polinomio', min_value=1)
     st.write("Modelo polinomial:",poly_degree)
-    #st.latex(r'''y = a +b \ln x = %.4f + %.4f \ln x'''% (a, b))
+    ##st.latex(r'''y = a +b \ln x = %.4f + %.4f \ln x'''% (a, b))
 
 with tabs[2]:
   # Load Data
