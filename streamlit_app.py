@@ -11,8 +11,10 @@ from sklearn.metrics import r2_score
 
 st.title('Modelos de regresión')
 st.markdown('*Autor: Gabriel Barragán*')
-email_address = 'gabrielbar@gmail.com'
-st.markdown(f"[Contáctenme](mailto:{email_address})")
+st.markdown('*Correo electrónico personal: gabrielbar95@gmail.com*')
+st.markdown('*Correo electrónico institucional: gbarragan@yachaytech.edu.ec*')
+email_address = 'https://www.yachaytech.edu.ec/perfil/gabriel-barragan/?source=academy'
+st.markdown(f"[Página institucional](mailto:{email_address})")
 
 tab_titles = ['Regresión lineal','Regresión polinomial','Regresión exponencial','Regresión logística','Regresión logarítmica']
 tabs = st.tabs(tab_titles)
