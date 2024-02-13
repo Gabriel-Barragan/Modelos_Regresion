@@ -182,7 +182,7 @@ with tabs[0]:
 with tabs[1]:
   # Load Data
   # Create a list of datasets
-  dataset_1 = ["presion_desgaste",
+  datasets_1 = ["presion_desgaste",
             "Plantas_maiz",
             "rapidez_lista_cosas_favoritas",
             "Ventas_ropas",
