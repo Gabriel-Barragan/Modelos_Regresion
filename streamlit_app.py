@@ -225,11 +225,11 @@ with tabs[1]:
     poly_degree = st.number_input('Grado del polinomio', min_value=1)
     poly_coef = np.polyfit(X, y, poly_degree)
     st.write("Modelo polinomial:")
-    st.latex(r''' y = a^{n}x_{n} + a^{n-1}x_{n-1}+...+a_1x+a_0''')
+    st.latex(r''' y = a_{n}x^{n} + a_{n-1}x^{n-1}+...+a_1x+a_0''')
     for i, coefficient in enumerate(poly_coef):
-      st.latex(rf'''a_{{i}} = {coefficient:.4f}''')
+      st.latex(rf'''a_{{i:1f}} = {coefficient:.4f}''')
 
-    y_predict = np.polyval(coefficients, X)
+    y_predict = np.polyval(poly_coef, X)
     R2 = r2_score(y, y_predict)
     st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
 
