@@ -180,7 +180,27 @@ with tabs[0]:
         st.pyplot(plt)
 
 with tabs[1]:
-  dataset = []
+  # Load Data
+  # Create a list of datasets
+  dataset = ["presion_desgaste",
+            "Plantas_maiz",
+            "rapidez_lista_cosas_favoritas",
+            "Ventas_ropas",
+            "Pelota_caida",
+            "Ley_Torricelli"]
+
+  st.write('# Cargar base de datos')
+  
+  # Create a dropdown menu to select the dataset
+  selected_dataset_1 = st.selectbox("Seleccione una base de datos", datasets_1)
+
+  # Read the selected dataset into a pandas Dataframe
+  df_1 = pd.read_csv('Datasets/'+selected_dataset_1+'.csv')
+
+  # Display the Dataframe
+  if st.checkbox('Mostrar base de datos', key=next(widget_id)):
+    st.write('Base de datos: '+selected_dataset_2)
+    st.dataframe(df_1)
 
 with tabs[2]:
   # Load Data
