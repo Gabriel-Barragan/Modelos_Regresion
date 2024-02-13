@@ -13,8 +13,7 @@ st.title('Modelos de regresión')
 st.markdown('*Autor: Gabriel Barragán*')
 st.markdown('*E-mail personal: gabrielbar95[at]gmail.com*')
 st.markdown('*E-mail electrónico institucional: gbarragan[at]yachaytech.edu.ec*')
-email_address = 'https://www.yachaytech.edu.ec/perfil/gabriel-barragan/?source=academy'
-st.markdown(f"Página institucional: [Yachay Tech](mailto:{email_address})")
+st.markdown(f"Página institucional: [Yachay Tech]('https://www.yachaytech.edu.ec/perfil/gabriel-barragan/?source=academy')")
 
 tab_titles = ['Regresión lineal','Regresión polinomial','Regresión exponencial','Regresión logística','Regresión logarítmica']
 tabs = st.tabs(tab_titles)
