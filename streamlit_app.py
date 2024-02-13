@@ -199,7 +199,7 @@ with tabs[1]:
 
   # Display the Dataframe
   if st.checkbox('Mostrar base de datos', key=next(widget_id)):
-    st.write('Base de datos: '+selected_dataset_2)
+    st.write('Base de datos: '+selected_dataset_1)
     st.dataframe(df_1)
 
 with tabs[2]:
