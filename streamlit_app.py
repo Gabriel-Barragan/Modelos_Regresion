@@ -227,7 +227,7 @@ with tabs[1]:
     st.write("Modelo polinomial  de grado ", poly_degree)
     st.latex(r''' y = a_{n}x^{n} + a_{n-1}x^{n-1}+...+a_1x+a_0''')
     for i, coefficient in enumerate(poly_coef):
-      st.latex(rf'''a_{i:.0f} = {coefficient:.4f}''')
+      st.latex(rf'''a_{i:.0f} = {coefficient:.2f}''')
 
     y_predict = np.polyval(poly_coef, X)
     R2 = r2_score(y, y_predict)
@@ -240,7 +240,7 @@ with tabs[1]:
     y_pred = np.polyval(poly_coef, x_pred)
          
     plt.subplots()
-    plt.title('Diagrama de dispersión y curva de regresión polinomial de grado'+poly_degree)   
+    plt.title('Diagrama de dispersión y curva de regresión polinomial')   
     plt.scatter(X, y)
     plt.plot(x_pred, y_pred, color='red')
     plt.xlabel(X.name)
@@ -249,11 +249,11 @@ with tabs[1]:
     st.pyplot(plt)
 
     # Predict a new value
-    st.write('# Predicción de valores con el modelo de función logística')
-    st.write('x: ',df_3['Tiempo_dias'].name)
-    input_value = st.number_input(f'Introduce un valor de X', min_value=float(df_3['Tiempo_dias'].min()), step=0.1, value=float(df_3['Tiempo_dias'].min()), key=next(widget_id))
-    predicted_value = logistic_function(input_value, C, a, r)
-    st.write(f'En {input_value} días habrán {predicted_value:.2f} moscas')
+    st.write('# Predicción de valores con el modelo polinomial')
+    st.write('X: ',X.name)
+    input_value = st.number_input(f'Introduce un valor de X', value=X.min(), key=next(widget_id))
+    predicted_value = np.polyval(poly_coef, input_value)
+    st.write(f'Si {X.name} es {input_value} entonces {y.name} es {predicted_value:.2f}')
 
 with tabs[2]:
   # Load Data
