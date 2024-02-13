@@ -224,7 +224,7 @@ with tabs[1]:
   if st.checkbox('Modelo polinomial', key=next(widget_id)):
     poly_degree = st.number_input('Grado del polinomio', min_value=1)
     poly_coef = np.polyfit(X, y, poly_degree)
-    st.write("Modelo polinomial:")
+    st.write("Modelo polinomial  de grado ", poly_degree)
     st.latex(r''' y = a_{n}x^{n} + a_{n-1}x^{n-1}+...+a_1x+a_0''')
     for i, coefficient in enumerate(poly_coef):
       st.latex(rf'''a_{i:.0f} = {coefficient:.4f}''')
@@ -232,6 +232,28 @@ with tabs[1]:
     y_predict = np.polyval(poly_coef, X)
     R2 = r2_score(y, y_predict)
     st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
+
+    x_min = st.number_input('Valor mínimo x:',value=X.min(), key=next(widget_id))
+    x_max = st.number_input('Valor máximo x:',value=X.max(), key=next(widget_id)) 
+    # Generate predictions
+    x_pred = np.linspace(x_min, x_max, 100)  # Time points for prediction
+    y_pred = np.polyval(poly_coef, x_pred)
+         
+    plt.subplots()
+    plt.title('Diagrama de dispersión y curva de regresión polinomial de grado'+poly_degree)   
+    plt.scatter(X, y)
+    plt.plot(x_pred, y_pred, color='red')
+    plt.xlabel(X.name)
+    plt.ylabel(y.name)
+    # Display the plot in Streamlit
+    st.pyplot(plt)
+
+    # Predict a new value
+    st.write('# Predicción de valores con el modelo de función logística')
+    st.write('x: ',df_3['Tiempo_dias'].name)
+    input_value = st.number_input(f'Introduce un valor de X', min_value=float(df_3['Tiempo_dias'].min()), step=0.1, value=float(df_3['Tiempo_dias'].min()), key=next(widget_id))
+    predicted_value = logistic_function(input_value, C, a, r)
+    st.write(f'En {input_value} días habrán {predicted_value:.2f} moscas')
 
 with tabs[2]:
   # Load Data
