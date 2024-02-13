@@ -223,8 +223,15 @@ with tabs[1]:
 
   if st.checkbox('Modelo polinomial', key=next(widget_id)):
     poly_degree = st.number_input('Grado del polinomio', min_value=1)
-    st.write("Modelo polinomial:",poly_degree)
-    ##st.latex(r'''y = a +b \ln x = %.4f + %.4f \ln x'''% (a, b))
+    poly_coef = np.polyfit(X, y, poly_degree)
+    st.write("Modelo polinomial:")
+    st.latex(r''' y = a^{n}x_{n} + a^{n-1}x_{n-1}+...+a_1x+a_0''')
+    for i, coefficient in enumerate(poly_coef):
+      st.latex(r'''a_{%} = %.4f'''% (i, coefficient))
+
+    y_predict = np.polyval(coefficients, X)
+    R2 = r2_score(y, y_predict)
+    st.write(f'Coeficiente de determinación: $$R^2={R2:.4f}$$')
 
 with tabs[2]:
   # Load Data
